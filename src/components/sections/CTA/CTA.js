@@ -8,7 +8,7 @@ function initCTAForm() {
     if (!form) return;
     
     // Número do WhatsApp (formato internacional sem caracteres especiais)
-    const whatsappNumber = '5585997210637';
+    const whatsappNumber = '558587775898';
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();

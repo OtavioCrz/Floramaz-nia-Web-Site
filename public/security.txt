@@ -2,7 +2,7 @@
 # https://securitytxt.org/
 
 Contact: mailto:contato@floramazonia.com.br
-Contact: https://wa.me/5585997210637
+Contact: https://wa.me/558587775898
 Expires: 2027-01-27T00:00:00.000Z
 Preferred-Languages: pt-BR, en
 Canonical: https://floramazonia.com.br/.well-known/security.txt

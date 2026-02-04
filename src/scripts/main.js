@@ -1,10 +1,8 @@
-﻿/* =====================================================
+/* =====================================================
    MAIN JS - FLORAMAZONIA
    Script principal de inicializacao
    ===================================================== */
 
-import { initEstatisticas } from '../components/sections/Estatisticas/Estatisticas.js';
-import { initGaleria } from '../components/sections/Galeria/Galeria.js';
 import { initFAQ } from '../components/sections/FAQ/FAQ.js';
 import { initCTAForm } from '../components/sections/CTA/CTA.js';
 
@@ -13,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScroll();
     initWhatsApp();
-    initEstatisticas();
-    initGaleria();
     initFAQ();
     initCTAForm();
 });
@@ -142,7 +138,7 @@ function initWhatsApp() {
     document.querySelectorAll('[data-whatsapp]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const phone = '5500000000000'; // Substituir pelo numero real
+            const phone = '558587775898';
             const message = encodeURIComponent('Ola! Gostaria de saber mais sobre os produtos da Floramazonia.');
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         });

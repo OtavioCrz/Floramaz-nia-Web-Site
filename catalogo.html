@@ -404,6 +404,42 @@ html>
             transform: scale(1.05);
         }
         
+        .catalogo-card--soon .catalogo-card__image-wrapper {
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(123, 45, 142, 0.3);
+        }
+        
+        .catalogo-card--soon {
+            pointer-events: none;
+        }
+        
+        .catalogo-card__placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .catalogo-card__soon-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #7B2D8E;
+            margin-bottom: 0.5rem;
+        }
+        
+        .catalogo-card__soon-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+        
         .catalogo-card__content {
             padding: 2rem;
             display: flex;
@@ -746,6 +782,144 @@ html>
         .catalogo-grid__see-more--less:hover {
             background: linear-gradient(135deg, #7B4BA1 0%, #5a3a80 100%);
         }
+
+        /* ===== SELETOR DE QUANTIDADE ===== */
+        .catalogo-card__quantity-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .catalogo-card__quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #7B2D8E;
+            background: #fff;
+            color: #7B2D8E;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .catalogo-card__quantity-btn:hover {
+            background: #7B2D8E;
+            color: #fff;
+        }
+        .catalogo-card__quantity-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .catalogo-card__quantity-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #333;
+            min-width: 2rem;
+            text-align: center;
+        }
+        .catalogo-card__quantity-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        /* ===== CARD FLUTUANTE DO PEDIDO ===== */
+        .catalogo-order-float {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            z-index: 999;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            padding: 1rem 1.25rem;
+            max-width: 320px;
+            transform: translateY(120%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .catalogo-order-float.is-visible {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        .catalogo-order-float__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        .catalogo-order-float__title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #7B2D8E;
+        }
+        .catalogo-order-float__count {
+            background: #7B2D8E;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 8px;
+        }
+        .catalogo-order-float__list {
+            max-height: 120px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        .catalogo-order-float__item {
+            padding: 0.35rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .catalogo-order-float__item:last-child {
+            border-bottom: none;
+        }
+        .catalogo-order-float__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .catalogo-order-float__btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        .catalogo-order-float__btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        @media (max-width: 480px) {
+            .catalogo-order-float {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+                max-width: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -789,7 +963,7 @@ html>
                 🍨 Linha Gelato
             </a>
             <a href="#sorbet" class="catalogo-nav__link catalogo-nav__link--sorbet">
-                🍧 Linha Sorbet
+                🍧 Sorbets Naturais
             </a>
             <a href="#mix" class="catalogo-nav__link catalogo-nav__link--mix">
                 🛒 Produtos Mix
@@ -809,134 +983,6 @@ html>
             </div>
             
             <div class="catalogo-grid">
-                <!-- Açaí Premium Tradicional -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--popular">Mais Vendido</span>
-                        <img src="./src/assets/images/caixa-acai.png" alt="Açaí Premium Tradicional" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Açaí</span>
-                        <h3 class="catalogo-card__title">Açaí Premium Tradicional</h3>
-                        <p class="catalogo-card__description">
-                            O autêntico açaí da Amazônia em sua forma mais pura. Cremoso, rico em antioxidantes e com energia natural. Ideal para açaiterias e estabelecimentos que buscam qualidade superior.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                100% Natural
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Sem Conservantes
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Rico em Antioxidantes
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">3,6kg</span>
-                                <span class="catalogo-card__size">7kg</span>
-                                <span class="catalogo-card__size">10kg</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Premium Tradicional. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Açaí Premium Grosso -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--premium">Premium</span>
-                        <img src="./src/assets/images/[AÇAÍ]-splashs-embalagens-caixas-2.png" alt="Açaí Premium Grosso" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Açaí</span>
-                        <h3 class="catalogo-card__title">Açaí Premium Grosso</h3>
-                        <p class="catalogo-card__description">
-                            Versão extra cremosa do nosso açaí, com maior concentração de polpa. Perfeito para quem busca uma experiência mais intensa e textura ainda mais encorpada.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Extra Cremoso
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Alta Concentração
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Sabor Intenso
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">3,6kg</span>
-                                <span class="catalogo-card__size">7kg</span>
-                                <span class="catalogo-card__size">10kg</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Premium Grosso. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Açaí Zero Açúcar -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--leve">Fit</span>
-                        <img src="./src/assets/images/caixa-acai.png" alt="Açaí Zero Açúcar" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Açaí</span>
-                        <h3 class="catalogo-card__title">Açaí Zero Açúcar</h3>
-                        <p class="catalogo-card__description">
-                            Todo o sabor do açaí amazônico sem adição de açúcar. Ideal para consumidores que buscam uma alimentação mais saudável sem abrir mão do prazer.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Zero Açúcar
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Low Carb
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Diabéticos
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">3,6kg</span>
-                                <span class="catalogo-card__size">7kg</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Zero Açúcar. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
                 <!-- Açaí Premium Pote 1,5L -->
                 <div class="catalogo-card">
                     <div class="catalogo-card__image-wrapper">
@@ -945,7 +991,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Açaí</span>
-                        <h3 class="catalogo-card__title">Açaí Premium (Pote)</h3>
+                        <h3 class="catalogo-card__title">Açaí Premium</h3>
                         <p class="catalogo-card__description">
                             O autêntico açaí da Amazônia em pote individual. Perfeito para consumo direto ou revenda em porções práticas.
                         </p>
@@ -965,81 +1011,7 @@ html>
                                 <span class="catalogo-card__size">1,5L</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Premium Pote 1,5L. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Gelato Ninho Pote 1,5L -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--popular">Pote</span>
-                        <img src="./src/assets/images/caixa-gelatos.png" alt="Gelato Ninho Pote" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Açaí</span>
-                        <h3 class="catalogo-card__title">Gelato Ninho (Pote)</h3>
-                        <p class="catalogo-card__description">
-                            Gelato cremoso sabor Ninho em pote individual. Sabor que agrada a todos, ideal para consumo direto.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Cremoso
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Prático
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">1,5L</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato Ninho Pote 1,5L. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Gelato Cupuaçu Pote 1,5L -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--novo">Pote</span>
-                        <img src="./src/assets/images/caixa-gelatos.png" alt="Gelato Cupuaçu Pote" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Açaí</span>
-                        <h3 class="catalogo-card__title">Gelato Cupuaçu (Pote)</h3>
-                        <p class="catalogo-card__description">
-                            Gelato cremoso de cupuaçu em pote individual. Sabor amazônico único em porção prática.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Fruta Amazônica
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Prático
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">1,5L</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato Cupuaçu Pote 1,5L. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Açaí Premium Pote 1,5L. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1076,7 +1048,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Master c/ Mel 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Açaí Master c/ Mel 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1113,7 +1085,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Master Puro 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Açaí Master Puro 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1150,7 +1122,7 @@ html>
                                 <span class="catalogo-card__size">4,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Premium 4,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Açaí Premium 4,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1187,7 +1159,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Açaí Premium 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Açaí Premium 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1213,7 +1185,81 @@ html>
             </div>
             
             <div class="catalogo-grid">
-                <!-- Gelato Cupuaçu -->
+                <!-- Gelato Ninho — 1,5 L -->
+                <div class="catalogo-card">
+                    <div class="catalogo-card__image-wrapper">
+                        <span class="catalogo-card__badge catalogo-card__badge--popular">Pote</span>
+                        <img src="./src/assets/images/caixa-gelatos.png" alt="Gelato Ninho 1,5L" class="catalogo-card__image">
+                    </div>
+                    <div class="catalogo-card__content">
+                        <span class="catalogo-card__category">Gelato</span>
+                        <h3 class="catalogo-card__title">Gelato Ninho</h3>
+                        <p class="catalogo-card__description">
+                            Gelato cremoso sabor Ninho em pote individual. Sabor que agrada a todos, ideal para consumo direto.
+                        </p>
+                        <div class="catalogo-card__features">
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Cremoso
+                            </span>
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Prático
+                            </span>
+                        </div>
+                        <div class="catalogo-card__sizes">
+                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
+                            <div class="catalogo-card__sizes-list">
+                                <span class="catalogo-card__size">1,5L</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato Ninho 1,5L. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gelato Cupuaçú — 1,5 L -->
+                <div class="catalogo-card">
+                    <div class="catalogo-card__image-wrapper">
+                        <span class="catalogo-card__badge catalogo-card__badge--novo">Pote</span>
+                        <img src="./src/assets/images/caixa-gelatos.png" alt="Gelato Cupuaçú 1,5L" class="catalogo-card__image">
+                    </div>
+                    <div class="catalogo-card__content">
+                        <span class="catalogo-card__category">Gelato</span>
+                        <h3 class="catalogo-card__title">Gelato Cupuaçú</h3>
+                        <p class="catalogo-card__description">
+                            Gelato cremoso de cupuaçu em pote individual. Sabor amazônico único em porção prática.
+                        </p>
+                        <div class="catalogo-card__features">
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Fruta Amazônica
+                            </span>
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Prático
+                            </span>
+                        </div>
+                        <div class="catalogo-card__sizes">
+                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
+                            <div class="catalogo-card__sizes-list">
+                                <span class="catalogo-card__size">1,5L</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato Cupuaçú 1,5L. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Gelato Cupuaçu 5,5kg -->
                 <div class="catalogo-card">
                     <div class="catalogo-card__image-wrapper">
                         <span class="catalogo-card__badge catalogo-card__badge--novo">Novo</span>
@@ -1246,7 +1292,7 @@ html>
                                 <span class="catalogo-card__size">5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Cupuaçu. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Cupuaçu. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1255,40 +1301,35 @@ html>
                     </div>
                 </div>
 
-                <!-- Gelato Açaí -->
+                <!-- Gelatos Caixa (5,5 kg) -->
                 <div class="catalogo-card">
                     <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--popular">Popular</span>
-                        <img src="./src/assets/images/[GELATO]-splashs-embalagens-caixas-2.png" alt="Gelato de Açaí" class="catalogo-card__image">
+                        <span class="catalogo-card__badge catalogo-card__badge--popular">Caixa</span>
+                        <img src="./src/assets/images/[GELATO]-splashs-embalagens-caixas-2.png" alt="Gelatos Caixa 5,5kg" class="catalogo-card__image">
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Gelato</span>
-                        <h3 class="catalogo-card__title">Gelato de Açaí</h3>
+                        <h3 class="catalogo-card__title">Gelatos Caixa</h3>
                         <p class="catalogo-card__description">
-                            A combinação perfeita entre a cremosidade do gelato italiano e o sabor marcante do açaí amazônico. Um sucesso garantido.
+                            Linha de gelatos em embalagem caixa 5,5kg. Variedade de sabores para estabelecimentos com maior demanda.
                         </p>
                         <div class="catalogo-card__features">
                             <span class="catalogo-card__feature">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Sabor Marcante
+                                Embalagem Caixa
                             </span>
                             <span class="catalogo-card__feature">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Textura Italiana
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Rico em Vitaminas
+                                5,5 kg
                             </span>
                         </div>
                         <div class="catalogo-card__sizes">
                             <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
                             <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">2kg</span>
-                                <span class="catalogo-card__size">5kg</span>
+                                <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Açaí. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse nos Gelatos Caixa (5,5 kg). Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1330,7 +1371,7 @@ html>
                                 <span class="catalogo-card__size">5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Bacuri. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Bacuri. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1367,7 +1408,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Ninho Trufado com Nutella 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Ninho Trufado com Nutella 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1404,7 +1445,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Ninho Trufado Tradicional 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Ninho Trufado Tradicional 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1441,7 +1482,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Ninho 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Ninho 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1478,7 +1519,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato Ferrero Rocher 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato Ferrero Rocher 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1515,7 +1556,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Nesquik 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Nesquik 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1552,7 +1593,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato Delícia de Abacaxi 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato Delícia de Abacaxi 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1589,7 +1630,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato Chocolate Belga 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato Chocolate Belga 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1626,7 +1667,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Flocos 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Flocos 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1663,7 +1704,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Óreo 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Óreo 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1700,7 +1741,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Milho Verde 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Milho Verde 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1737,7 +1778,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Morango Sensação Zero Açúcar 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Morango Sensação Zero Açúcar 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1774,7 +1815,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Unicórnio 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Unicórnio 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1811,7 +1852,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Pistache 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Pistache 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1848,7 +1889,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Ovomaltine 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Ovomaltine 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1885,7 +1926,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Cupuaçu 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Cupuaçu 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1922,7 +1963,7 @@ html>
                                 <span class="catalogo-card__size">5,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Gelato de Bacuri 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Gelato de Bacuri 5,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -1936,141 +1977,26 @@ html>
 
     <div class="catalogo-separator"></div>
 
-    <!-- Seção Sorbet -->
+    <!-- Seção Sorbets Naturais -->
     <section class="catalogo-section catalogo-section--sorbet" id="sorbet">
         <div class="catalogo-section__container">
             <div class="catalogo-section__header">
                 <div class="catalogo-section__icon">🍧</div>
-                <h2 class="catalogo-section__title">Linha Sorbet Natural</h2>
+                <h2 class="catalogo-section__title">Linha Sorbets Naturais</h2>
                 <p class="catalogo-section__subtitle">
                     Sorbets refrescantes e sem lactose, feitos apenas com frutas naturais da Amazônia. Perfeitos para os dias quentes.
                 </p>
             </div>
             
             <div class="catalogo-grid">
-                <!-- Sorbet Maracujá -->
-                <div class="catalogo-card">
+                <!-- Em breve -->
+                <div class="catalogo-card catalogo-card--soon">
                     <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--leve">Refrescante</span>
-                        <img src="./src/assets/images/caixa-sorbet.png" alt="Sorbet de Maracujá" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Sorbet</span>
-                        <h3 class="catalogo-card__title">Sorbet de Maracujá</h3>
-                        <p class="catalogo-card__description">
-                            O sabor tropical e refrescante do maracujá em um sorbet leve e saudável. Sem lactose e sem glúten, perfeito para todos.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Sem Lactose
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Sem Glúten
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Vegano
-                            </span>
+                        <span class="catalogo-card__badge catalogo-card__badge--novo">Em breve</span>
+                        <div class="catalogo-card__placeholder">
+                            <span class="catalogo-card__soon-text">Em breve</span>
+                            <p class="catalogo-card__soon-desc">Novos sabores de sorbets naturais em breve.</p>
                         </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">2kg</span>
-                                <span class="catalogo-card__size">5kg</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Sorbet de Maracujá. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Sorbet Manga -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--popular">Favorito</span>
-                        <img src="./src/assets/images/caixa-sorbet.png" alt="Sorbet de Manga" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Sorbet</span>
-                        <h3 class="catalogo-card__title">Sorbet de Manga</h3>
-                        <p class="catalogo-card__description">
-                            A doçura natural da manga em um sorbet cremoso e refrescante. Rico em vitamina C e perfeito para qualquer momento.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Rico em Vitamina C
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Sem Lactose
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Natural
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">2kg</span>
-                                <span class="catalogo-card__size">5kg</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Sorbet de Manga. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Sorbet Frutas Vermelhas -->
-                <div class="catalogo-card">
-                    <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--novo">Mix</span>
-                        <img src="./src/assets/images/caixa-sorbet.png" alt="Sorbet Frutas Vermelhas" class="catalogo-card__image">
-                    </div>
-                    <div class="catalogo-card__content">
-                        <span class="catalogo-card__category">Sorbet</span>
-                        <h3 class="catalogo-card__title">Sorbet Frutas Vermelhas</h3>
-                        <p class="catalogo-card__description">
-                            Combinação deliciosa de frutas vermelhas em um sorbet antioxidante e saboroso. Ideal para quem busca saúde e sabor.
-                        </p>
-                        <div class="catalogo-card__features">
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Antioxidante
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Mix de Frutas
-                            </span>
-                            <span class="catalogo-card__feature">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Vegano
-                            </span>
-                        </div>
-                        <div class="catalogo-card__sizes">
-                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
-                            <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">2kg</span>
-                                <span class="catalogo-card__size">5kg</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Sorbet Frutas Vermelhas. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Solicitar Orçamento
-                        </a>
                     </div>
                 </div>
             </div>
@@ -2119,7 +2045,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse nas Coberturas Fini (sabores) 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse nas Coberturas Fini (sabores) 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2128,22 +2054,22 @@ html>
                     </div>
                 </div>
 
-                <!-- Cobertura Pérola do Pará Morango Duporto -->
+                <!-- Cobertura Pérola do Pará -->
                 <div class="catalogo-card">
                     <div class="catalogo-card__image-wrapper">
                         <span class="catalogo-card__badge catalogo-card__badge--popular">Cobertura</span>
-                        <img src="./src/assets/images/caixa-gelatos.png" alt="Cobertura Pérola do Pará Morango Duporto" class="catalogo-card__image">
+                        <img src="./src/assets/images/caixa-gelatos.png" alt="Cobertura Pérola do Pará" class="catalogo-card__image">
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Cobertura Pérola do Pará Morango Duporto</h3>
+                        <h3 class="catalogo-card__title">Cobertura Pérola do Pará</h3>
                         <p class="catalogo-card__description">
-                            Cobertura sabor morango para acabamento rápido em taças e copos.
+                            Cobertura Pérola do Pará para acabamento em taças e copos. Qualidade premium.
                         </p>
                         <div class="catalogo-card__features">
                             <span class="catalogo-card__feature">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Morango
+                                Pérola do Pará
                             </span>
                             <span class="catalogo-card__feature">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -2153,10 +2079,10 @@ html>
                         <div class="catalogo-card__sizes">
                             <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
                             <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">1,3kg</span>
+                                <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Cobertura Pérola do Pará Morango Duporto 1,3kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Cobertura Pérola do Pará 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2193,7 +2119,7 @@ html>
                                 <span class="catalogo-card__size">1,3kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Cobertura Diversos Sabores 1,3kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Cobertura Diversos Sabores 1,3kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2202,35 +2128,35 @@ html>
                     </div>
                 </div>
 
-                <!-- Polpa Açaí Pérola do Pará -->
+                <!-- Cobertura Morango Duporto -->
                 <div class="catalogo-card">
                     <div class="catalogo-card__image-wrapper">
-                        <span class="catalogo-card__badge catalogo-card__badge--premium">Açaí</span>
-                        <img src="./src/assets/images/caixa-acai.png" alt="Polpa Açaí Pérola do Pará" class="catalogo-card__image">
+                        <span class="catalogo-card__badge catalogo-card__badge--popular">Cobertura</span>
+                        <img src="./src/assets/images/caixa-gelatos.png" alt="Cobertura Morango Duporto" class="catalogo-card__image">
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Polpa Açaí Pérola do Pará</h3>
+                        <h3 class="catalogo-card__title">Cobertura Morango Duporto</h3>
                         <p class="catalogo-card__description">
-                            Polpa de açaí pronta para batidas e bases de sobremesas. Sabor amazônico autêntico.
+                            Cobertura sabor morango Duporto para acabamento rápido em taças e copos.
                         </p>
                         <div class="catalogo-card__features">
                             <span class="catalogo-card__feature">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                100% Açaí
+                                Morango
                             </span>
                             <span class="catalogo-card__feature">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                Pronto para Mixer
+                                Pronto Uso
                             </span>
                         </div>
                         <div class="catalogo-card__sizes">
                             <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
                             <div class="catalogo-card__sizes-list">
-                                <span class="catalogo-card__size">1kg</span>
+                                <span class="catalogo-card__size">1,3kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Polpa Açaí Pérola do Pará 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Cobertura Morango Duporto 1,3kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2247,7 +2173,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Gelatina Dentadura (Docile)</h3>
+                        <h3 class="catalogo-card__title">Gelatina Dentadura Docile</h3>
                         <p class="catalogo-card__description">
                             Gummies em formato divertido para toppings rápidos em taças e copos.
                         </p>
@@ -2267,7 +2193,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Gelatina Dentadura (Docile) 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Gelatina Dentadura Docile 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2304,7 +2230,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Docile Mix 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Docile Mix 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2341,7 +2267,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Docigoma 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Docigoma Docile 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2378,7 +2304,7 @@ html>
                                 <span class="catalogo-card__size">220g</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Marshmallow Pistache 220g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Marshmallow Pistache 220g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2415,7 +2341,7 @@ html>
                                 <span class="catalogo-card__size">220g</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Marshmallow Recheado 220g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Marshmallow Recheado 220g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2452,7 +2378,7 @@ html>
                                 <span class="catalogo-card__size">250g</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Marshmallow Recheado Morango 250g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Marshmallow Recheado Morango 250g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2489,7 +2415,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Docile Amora 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Docile Amora 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2526,7 +2452,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Docile Banana 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Docile Banana 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2563,7 +2489,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Granola Sabor da Terra 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Granola Sabor da Terra 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2600,7 +2526,7 @@ html>
                                 <span class="catalogo-card__size">500g</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Chococandy Pastilhas Confeitadas 500g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Chococandy Pastilhas Confeitadas 500g. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2617,7 +2543,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Brigadeiro de Colher (Alispec)</h3>
+                        <h3 class="catalogo-card__title">Brigadeiro de Colher Alispec</h3>
                         <p class="catalogo-card__description">
                             Brigadeiro de colher pronto para rechear, decorar e montar camadas.
                         </p>
@@ -2637,7 +2563,7 @@ html>
                                 <span class="catalogo-card__size">1,01kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Brigadeiro de Colher (Alispec) 1,01kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Brigadeiro de Colher (Alispec) 1,01kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2654,7 +2580,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Cerelis (Alispec)</h3>
+                        <h3 class="catalogo-card__title">Cerelis Alispec</h3>
                         <p class="catalogo-card__description">
                             Creme de cereais pronto para rechear e montar camadas rápidas.
                         </p>
@@ -2674,7 +2600,7 @@ html>
                                 <span class="catalogo-card__size">1,01kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Cerelis (Alispec) 1,01kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Cerelis (Alispec) 1,01kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2691,7 +2617,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Cerelis (Alispec) 2,5kg</h3>
+                        <h3 class="catalogo-card__title">Cerelis Alispec</h3>
                         <p class="catalogo-card__description">
                             Formato econômico para alto volume em sobremesas e açaí.
                         </p>
@@ -2711,7 +2637,7 @@ html>
                                 <span class="catalogo-card__size">2,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Cerelis (Alispec) 2,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Cerelis (Alispec) 2,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2728,7 +2654,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Cerelis (Alispec) 4,5kg</h3>
+                        <h3 class="catalogo-card__title">Cerelis Alispec</h3>
                         <p class="catalogo-card__description">
                             Balde profissional para grandes produções e alto giro.
                         </p>
@@ -2748,7 +2674,7 @@ html>
                                 <span class="catalogo-card__size">4,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Cerelis (Alispec) 4,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Cerelis (Alispec) 4,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2785,7 +2711,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Recheio de Amendoim 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Recheio de Amendoim 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2822,7 +2748,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Ganache Chocolate ao Leite 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Ganache Chocolate ao Leite 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2859,7 +2785,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Leitinho 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Leitinho 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2896,7 +2822,7 @@ html>
                                 <span class="catalogo-card__size">3kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Creme de Dorella 3kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Creme de Dorella 3kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2933,7 +2859,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Choco Cookies Branco 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Choco Cookies Branco 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -2950,7 +2876,7 @@ html>
                     </div>
                     <div class="catalogo-card__content">
                         <span class="catalogo-card__category">Produtos Mix</span>
-                        <h3 class="catalogo-card__title">Cookies Branco (Doremus)</h3>
+                        <h3 class="catalogo-card__title">Cookies Branco Doremus</h3>
                         <p class="catalogo-card__description">
                             Cookies brancos Doremus para misturar ou finalizar sobremesas.
                         </p>
@@ -2970,7 +2896,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Cookies Branco (Doremus) 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Cookies Branco (Doremus) 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3007,7 +2933,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Chocowafer ao Leite 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Chocowafer ao Leite 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3044,7 +2970,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Choconutte (Creme de Avelã) 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Choconutte (Creme de Avelã) 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3081,7 +3007,7 @@ html>
                                 <span class="catalogo-card__size">500 unid</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Colher Roxa 500 unid. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Colher Roxa 500 unid. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3118,7 +3044,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse nas Gotas de Chocolate 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse nas Gotas de Chocolate 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3155,7 +3081,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Bombom Sonho de Valsa 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Bombom Sonho de Valsa 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3192,7 +3118,7 @@ html>
                                 <span class="catalogo-card__size">2,5kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse no Leite Condensado 2,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Leite Condensado 2,5kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3229,7 +3155,7 @@ html>
                                 <span class="catalogo-card__size">4kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Pasta de Amendoim 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Pasta de Amendoim 4kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3266,7 +3192,7 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Castanha Triturada 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Castanha Triturada 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3303,7 +3229,81 @@ html>
                                 <span class="catalogo-card__size">1kg</span>
                             </div>
                         </div>
-                        <a href="https://wa.me/5585997210637?text=Olá! Tenho interesse na Castanha Caramelizada 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Castanha Caramelizada 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Castanha Bandas -->
+                <div class="catalogo-card">
+                    <div class="catalogo-card__image-wrapper">
+                        <span class="catalogo-card__badge catalogo-card__badge--popular">Castanhas</span>
+                        <img src="./src/assets/images/caixa-gelatos.png" alt="Castanha Bandas" class="catalogo-card__image">
+                    </div>
+                    <div class="catalogo-card__content">
+                        <span class="catalogo-card__category">Produtos Mix</span>
+                        <h3 class="catalogo-card__title">Castanha Bandas</h3>
+                        <p class="catalogo-card__description">
+                            Castanhas em formato bandas para toppings e complementos em taças e bowls.
+                        </p>
+                        <div class="catalogo-card__features">
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Bandas
+                            </span>
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Topping
+                            </span>
+                        </div>
+                        <div class="catalogo-card__sizes">
+                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
+                            <div class="catalogo-card__sizes-list">
+                                <span class="catalogo-card__size">1kg</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse na Castanha Bandas 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Amendoim Triturado -->
+                <div class="catalogo-card">
+                    <div class="catalogo-card__image-wrapper">
+                        <span class="catalogo-card__badge catalogo-card__badge--popular">Castanhas e Trituras</span>
+                        <img src="./src/assets/images/caixa-gelatos.png" alt="Amendoim Triturado" class="catalogo-card__image">
+                    </div>
+                    <div class="catalogo-card__content">
+                        <span class="catalogo-card__category">Produtos Mix</span>
+                        <h3 class="catalogo-card__title">Amendoim Triturado</h3>
+                        <p class="catalogo-card__description">
+                            Amendoim triturado para crocância e sabor em taças, bowls e preparações.
+                        </p>
+                        <div class="catalogo-card__features">
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Triturado
+                            </span>
+                            <span class="catalogo-card__feature">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Crocante
+                            </span>
+                        </div>
+                        <div class="catalogo-card__sizes">
+                            <span class="catalogo-card__sizes-title">Embalagens Disponíveis</span>
+                            <div class="catalogo-card__sizes-list">
+                                <span class="catalogo-card__size">1kg</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/558587775898?text=Olá! Tenho interesse no Amendoim Triturado 1kg. Gostaria de mais informações." class="catalogo-card__cta" target="_blank">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
@@ -3329,7 +3329,7 @@ html>
                 Condições especiais para revendedores e açaiterias.
             </p>
             <div class="catalogo-cta__buttons">
-                <a href="https://wa.me/5585997210637?text=Olá! Vim pelo catálogo e tenho interesse em ser um revendedor Floramazônia. Gostaria de mais informações." class="catalogo-cta__btn catalogo-cta__btn--primary" target="_blank">
+                <a href="https://wa.me/558587775898?text=Olá! Vim pelo catálogo e tenho interesse em ser um revendedor Floramazônia. Gostaria de mais informações." class="catalogo-cta__btn catalogo-cta__btn--primary" target="_blank">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                     </svg>
@@ -3354,9 +3354,24 @@ html>
         </p>
     </footer>
 
+    <!-- Card flutuante do pedido -->
+    <div class="catalogo-order-float" id="orderFloat" aria-hidden="true">
+        <div class="catalogo-order-float__header">
+            <span class="catalogo-order-float__title">Seu pedido</span>
+            <span class="catalogo-order-float__count" id="orderCount">0 itens</span>
+        </div>
+        <div class="catalogo-order-float__list" id="orderList"></div>
+        <button type="button" class="catalogo-order-float__btn" id="orderWhatsAppBtn" aria-label="Solicitar orçamento no WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Solicitar orçamento no WhatsApp
+        </button>
+    </div>
+
     <!-- WhatsApp Float -->
     <div class="whatsapp-float">
-        <a href="https://wa.me/5585997210637" class="whatsapp-float__button" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+        <a href="https://wa.me/558587775898" class="whatsapp-float__button" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
@@ -3365,12 +3380,99 @@ html>
 
     <!-- Script para smooth scroll -->
     <script>
-        // Adicionar botões "Ver todo o catálogo" para cada categoria
         document.addEventListener('DOMContentLoaded', () => {
+            const WHATSAPP_NUMBER = '558587775898';
+            const cart = new Map();
+
+            function getProductKey(name, size) {
+                return `${name}|||${size}`;
+            }
+
+            function updateOrderFloat() {
+                const float = document.getElementById('orderFloat');
+                const countEl = document.getElementById('orderCount');
+                const listEl = document.getElementById('orderList');
+                const btn = document.getElementById('orderWhatsAppBtn');
+                const total = [...cart.values()].reduce((s, i) => s + i.qty, 0);
+                if (total > 0) {
+                    float.classList.add('is-visible');
+                    float.setAttribute('aria-hidden', 'false');
+                    countEl.textContent = total === 1 ? '1 item' : `${total} itens`;
+                    listEl.innerHTML = [...cart.entries()]
+                        .filter(([, i]) => i.qty > 0)
+                        .map(([, i]) => `<div class="catalogo-order-float__item">${i.qty}x ${i.name} ${i.size ? `(${i.size})` : ''}</div>`)
+                        .join('');
+                    const lines = [...cart.entries()]
+                        .filter(([, i]) => i.qty > 0)
+                        .map(([, i]) => `• ${i.name}${i.size ? ` (${i.size})` : ''}: ${i.qty} un.`);
+                    const message = `Olá! Gostaria de solicitar orçamento com os seguintes itens:\n\n${lines.join('\n')}\n\nObrigado!`;
+                    btn.dataset.whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+                } else {
+                    float.classList.remove('is-visible');
+                    float.setAttribute('aria-hidden', 'true');
+                    countEl.textContent = '0 itens';
+                    listEl.innerHTML = '';
+                    delete btn.dataset.whatsappUrl;
+                }
+            }
+
+            document.querySelectorAll('.catalogo-card:not(.catalogo-card--soon)').forEach((card, idx) => {
+                const titleEl = card.querySelector('.catalogo-card__title');
+                const sizesEl = card.querySelectorAll('.catalogo-card__size');
+                const ctaEl = card.querySelector('.catalogo-card__cta');
+                if (!titleEl) return;
+                const name = titleEl.textContent.trim();
+                const size = sizesEl.length ? Array.from(sizesEl).map(s => s.textContent.trim()).join(', ') : '';
+                const key = getProductKey(name, size);
+                let qty = 0;
+
+                const wrap = document.createElement('div');
+                wrap.className = 'catalogo-card__quantity-group';
+                wrap.innerHTML = `
+                    <span class="catalogo-card__quantity-label">Quantidade:</span>
+                    <button type="button" class="catalogo-card__quantity-btn" data-action="minus" aria-label="Diminuir">−</button>
+                    <span class="catalogo-card__quantity-value" data-qty>0</span>
+                    <button type="button" class="catalogo-card__quantity-btn" data-action="plus" aria-label="Aumentar">+</button>
+                `;
+                const minusBtn = wrap.querySelector('[data-action="minus"]');
+                const plusBtn = wrap.querySelector('[data-action="plus"]');
+                const qtyEl = wrap.querySelector('[data-qty]');
+
+                function sync() {
+                    qtyEl.textContent = qty;
+                    minusBtn.disabled = qty <= 0;
+                    if (qty > 0) {
+                        cart.set(key, { name, size, qty });
+                    } else {
+                        cart.delete(key);
+                    }
+                    updateOrderFloat();
+                }
+
+                minusBtn.addEventListener('click', () => {
+                    if (qty > 0) { qty--; sync(); }
+                });
+                plusBtn.addEventListener('click', () => {
+                    qty++; sync();
+                });
+
+                if (ctaEl) {
+                    ctaEl.style.display = 'none';
+                    ctaEl.parentNode.insertBefore(wrap, ctaEl);
+                }
+            });
+
+            document.getElementById('orderWhatsAppBtn').addEventListener('click', () => {
+                const url = document.getElementById('orderWhatsAppBtn').dataset.whatsappUrl;
+                if (url) {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                }
+            });
+
             const categoryNames = {
                 'acai': 'Açaí Premium',
                 'gelato': 'Gelato Artesanal',
-                'sorbet': 'Sorbet Natural',
+                'sorbet': 'Sorbets Naturais',
                 'mix': 'Produtos Mix'
             };
 

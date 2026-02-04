@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     
     <!-- ===== SEO META TAGS PRIMARIAS ===== -->
     <title>Floramazonia | Acai Premium, Gelatos e Sorbets Naturais da Amazonia - Fortaleza CE</title>
-    <meta name="description" content="Floramazonia: O melhor acai premium de Fortaleza! Gelatos e sorbets 100% naturais direto da Amazonia. +50.000 clientes satisfeitos. Seja um revendedor! Ligue: (85) 99721-0637">
+    <meta name="description" content="Floramazonia: O melhor acai premium de Fortaleza! Gelatos e sorbets 100% naturais direto da Amazonia. +50.000 clientes satisfeitos. Seja um revendedor! Ligue: (85) 8777-5898">
     <meta name="keywords" content="acai fortaleza, acai premium, gelato natural, sorbet amazonia, acai delivery fortaleza, revender acai, distribuidora acai ceara, acai puro, acai sem conservantes, gelato artesanal, sorvete natural, frutas amazonicas, cupuacu, bacuri, floramazonia">
     <meta name="author" content="Floramazonia - Acai e Gelatos">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -105,7 +105,7 @@
             "https://floramazonia.com.br/src/assets/images/og-image.jpg",
             "https://floramazonia.com.br/src/assets/images/galeria1.webp"
         ],
-        "telephone": "+55-85-99721-0637",
+        "telephone": "+55-85-8777-5898",
         "email": "contato@floramazonia.com.br",
         "address": {
             "@type": "PostalAddress",
@@ -148,7 +148,7 @@
         "sameAs": [
             "https://www.instagram.com/floramazoniabr/",
             "https://www.facebook.com/Natuzbr/",
-            "https://wa.me/5585997210637"
+            "https://wa.me/558587775898"
         ],
         "aggregateRating": {
             "@type": "AggregateRating",
@@ -209,7 +209,7 @@
                 "name": "Como posso ser um revendedor Floramazonia?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Entre em contato conosco pelo WhatsApp (85) 99721-0637 ou preencha o formulario em nosso site. Nossa equipe entrara em contato para apresentar as condicoes comerciais."
+                    "text": "Entre em contato conosco pelo WhatsApp (85) 8777-5898 ou preencha o formulario em nosso site. Nossa equipe entrara em contato para apresentar as condicoes comerciais."
                 }
             },
             {
@@ -290,7 +290,6 @@
     <link rel="stylesheet" href="./src/components/sections/Produtos/Produtos.css">
     <link rel="stylesheet" href="./src/components/sections/Beneficios/Beneficios.css">
     <link rel="stylesheet" href="./src/components/sections/Depoimentos/Depoimentos.css">
-    <link rel="stylesheet" href="./src/components/sections/Estatisticas/Estatisticas.css">
     <link rel="stylesheet" href="./src/components/sections/Galeria/Galeria.css">
     <link rel="stylesheet" href="./src/components/sections/FAQ/FAQ.css">
     <link rel="stylesheet" href="./src/components/sections/CTA/CTA.css">
@@ -317,14 +316,19 @@
                     <li class="header__nav-item">
                         <a href="#beneficios" class="header__nav-link">Beneficios</a>
                     </li>
-                    <li class="header__nav-item">
-                        <a href="#produtos" class="header__nav-link">Produtos</a>
+                    <li class="header__nav-item header__nav-item--has-dropdown">
+                        <a href="#produtos" class="header__nav-link header__nav-link--trigger">Produtos</a>
+                        <ul class="header__dropdown" aria-label="Submenu Produtos">
+                            <li class="header__dropdown-item">
+                                <a href="#produtos" class="header__dropdown-link">Ver Produtos (resumo)</a>
+                            </li>
+                            <li class="header__dropdown-item">
+                                <a href="./catalogo.html" class="header__dropdown-link">Catálogo Completo</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="header__nav-item">
                         <a href="#depoimentos" class="header__nav-link">Depoimentos</a>
-                    </li>
-                    <li class="header__nav-item">
-                        <a href="#galeria" class="header__nav-link">Galeria</a>
                     </li>
                     <li class="header__nav-item">
                         <a href="#faq" class="header__nav-link">FAQ</a>
@@ -364,14 +368,15 @@
                     <li class="header__mobile-nav-item">
                         <a href="#beneficios" class="header__mobile-nav-link">Beneficios</a>
                     </li>
-                    <li class="header__mobile-nav-item">
-                        <a href="#produtos" class="header__mobile-nav-link">Produtos</a>
+                    <li class="header__mobile-nav-item header__mobile-nav-item--has-submenu">
+                        <span class="header__mobile-nav-label">Produtos</span>
+                        <ul class="header__mobile-submenu">
+                            <li><a href="#produtos" class="header__mobile-nav-link">Ver Produtos (resumo)</a></li>
+                            <li><a href="./catalogo.html" class="header__mobile-nav-link">Catálogo Completo</a></li>
+                        </ul>
                     </li>
                     <li class="header__mobile-nav-item">
                         <a href="#depoimentos" class="header__mobile-nav-link">Depoimentos</a>
-                    </li>
-                    <li class="header__mobile-nav-item">
-                        <a href="#galeria" class="header__mobile-nav-link">Galeria</a>
                     </li>
                     <li class="header__mobile-nav-item">
                         <a href="#faq" class="header__mobile-nav-link">FAQ</a>
@@ -432,17 +437,23 @@
                     <!-- Botoes CTA -->
                     <div class="hero__actions">
                         <a href="#produtos" class="hero__btn hero__btn--primary">
-                            <span>Ver Produtos</span>
+                            <span>Ver Catálogo</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
-                        <a href="#contato" class="hero__btn hero__btn--secondary">
+                        <a href="https://wa.me/558587775898" class="hero__btn hero__btn--secondary" target="_blank" rel="noopener noreferrer">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                             </svg>
                             <span>Fale no WhatsApp</span>
+                        </a>
+                        <a href="https://www.ifood.com.br/delivery/fortaleza-ce/floramazonia----distribuidora-de-acai-e-gelatos-farias-brito/45863591-80db-477a-90e6-ad816a3c006b" target="_blank" rel="noopener noreferrer" class="hero__btn hero__btn--ifood" aria-label="Pedir no iFood">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.139.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.576.576 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.91h.011c0-.498-.406-.902-.906-.902h-.011c-.5 0-.906.404-.906.902v.857c-.576-.035-1.17-.053-1.755-.053-.18 0-.358.007-.535.018z"/>
+                            </svg>
+                            <span>Pedir no iFood</span>
                         </a>
                     </div>
 
@@ -468,7 +479,7 @@
                 <!-- Imagem do Indigena -->
                 <div class="hero__image-wrapper">
                     <img 
-                        src="./src/assets/images/indigena-hero.png" 
+                        src="./src/assets/images/indigena-hero.jpg" 
                         alt="Representacao da cultura amazonica" 
                         class="hero__image"
                         loading="eager"
@@ -491,69 +502,70 @@
                 <!-- Lado Esquerdo - Imagem -->
                 <div class="sobre__image-wrapper">
                     <img 
-                        src="./src/assets/images/acai-monte.jpg" 
-                        alt="Monte de açaí fresco da Amazônia" 
+                        src="./src/assets/images/sobre-section-image.webp" 
+                        alt="Floramazônia - Distribuidora de Açaí, Gelatos, Sorbets e Produtos Mix" 
                         class="sobre__image"
                         loading="lazy"
                     >
                     <!-- Card Sobreposto -->
                     <div class="sobre__badge">
                         <span class="sobre__badge-icon">🏆</span>
-                        <span class="sobre__badge-text">+ 5 anos de tradição</span>
+                        <span class="sobre__badge-text">+ 5 anos distribuindo em Fortaleza</span>
                     </div>
                 </div>
 
                 <!-- Lado Direito - Conteudo -->
                 <div class="sobre__content">
                     <!-- Subtitulo -->
-                    <span class="sobre__subtitle">Sobre a Floramazônia</span>
+                    <span class="sobre__subtitle">Sua Distribuidora de Confiança</span>
                     
                     <!-- Titulo -->
-                    <h2 class="sobre__title">Os Melhores Açaís, Gelatos e Sorbets da Amazônia</h2>
+                    <h2 class="sobre__title">Distribuidora de Açaí, Gelatos, Sorbets e Produtos Mix</h2>
                     
                     <!-- Texto -->
                     <p class="sobre__text">
-                        A Floramazônia é especialista em Açaí Premium, Gelatos Artesanais e Sorbets Naturais. Trabalhamos diretamente com comunidades ribeirinhas para trazer os melhores produtos naturais da Amazônia à sua mesa. Qualidade superior, sabor incomparável e respeito ao meio ambiente garantido.
+                        A Floramazônia é distribuidora especializada em Açaí Premium, Gelatos Artesanais, Sorbets Naturais e Produtos Mix para sua loja, cafeteria ou sorveteria. Atendemos revendedores, pontos de açaí e estabelecimentos em Fortaleza e região. Qualidade amazônica, preços competitivos e logística ágil para abastecer seu negócio.
                     </p>
+
+                    <!-- Splash decorativo - sobreposto aos cards, abaixo do texto -->
+                    <div class="sobre__splash sobre__splash--over-cards">
+                        <img 
+                            src="./src/assets/images/splash-açaí.png" 
+                            alt="" 
+                            class="sobre__splash-image"
+                            loading="lazy"
+                            aria-hidden="true"
+                        >
+                    </div>
 
                     <!-- Cards de Beneficios -->
                     <div class="sobre__features">
                         <div class="sobre__feature">
                             <span class="sobre__feature-icon">✓</span>
-                            <span class="sobre__feature-text">Açaí Premium 100% puro da Amazônia</span>
+                            <span class="sobre__feature-text">Açaí Premium em atacado e varejo</span>
                         </div>
                         <div class="sobre__feature">
                             <span class="sobre__feature-icon">✓</span>
-                            <span class="sobre__feature-text">Gelatos Artesanais com frutas amazônicas</span>
+                            <span class="sobre__feature-text">Gelatos Artesanais - linha completa</span>
                         </div>
                         <div class="sobre__feature">
                             <span class="sobre__feature-icon">✓</span>
-                            <span class="sobre__feature-text">Sorbets Naturais para dias quentes</span>
+                            <span class="sobre__feature-text">Sorbets Naturais 100% fruta</span>
                         </div>
                         <div class="sobre__feature">
                             <span class="sobre__feature-icon">✓</span>
-                            <span class="sobre__feature-text">Sem conservantes artificiais</span>
+                            <span class="sobre__feature-text">Produtos Mix: coberturas, granolas e mais</span>
                         </div>
                         <div class="sobre__feature">
                             <span class="sobre__feature-icon">✓</span>
-                            <span class="sobre__feature-text">Entrega rápida e embalagem especial</span>
+                            <span class="sobre__feature-text">Entrega para Fortaleza e região metropolitana</span>
                         </div>
                     </div>
 
                     <!-- Botao CTA -->
                     <a href="#" class="sobre__btn" data-whatsapp>
-                        Conhecer mais
+                        Fazer Pedido / Solicitar Tabela
                     </a>
-                </div>
-
-                <!-- Splash Açaí - Lado Direito -->
-                <div class="sobre__splash">
-                    <img 
-                        src="./src/assets/images/splash-açaí.png" 
-                        alt="Splash de açaí decorativo" 
-                        class="sobre__splash-image"
-                        loading="lazy"
-                    >
                 </div>
             </div>
         </section>
@@ -569,15 +581,87 @@
                 <!-- Header da Secao -->
                 <div class="beneficios__header">
                     <span class="beneficios__tag">Por Que Escolher</span>
-                    <h2 class="beneficios__title">Benefícios do Açaí, Gelato e Sorbet</h2>
+                    <h2 class="beneficios__title">Benefícios de Comprar na Floramazônia</h2>
                     <p class="beneficios__subtitle">
-                        Descubra como o Açaí Premium, Gelatos Artesanais e Sorbets Naturais transformam sua saúde e bem-estar com ingredientes puros da Amazônia.
+                        Como distribuidora de Açaí, Gelatos, Sorbets e Toppings Mix, oferecemos as melhores condições para sua loja, sorveteria ou ponto de açaí.
                     </p>
                 </div>
 
                 <!-- Grid de Cards -->
                 <div class="beneficios__grid">
-                    <!-- Card 1 - 100% Natural -->
+                    <!-- Card 1 - Linha Completa -->
+                    <div class="beneficios__card">
+                        <div class="beneficios__icon-wrapper">
+                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3 class="beneficios__card-title">Linha Completa</h3>
+                        <p class="beneficios__card-text">
+                            Açaí premium, gelatos artesanais, sorbets naturais e toppings mix em um só lugar para abastecer seu negócio.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 - 100% Natural -->
+                    <div class="beneficios__card">
+                        <div class="beneficios__icon-wrapper">
+                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="beneficios__card-title">100% Natural</h3>
+                        <p class="beneficios__card-text">
+                            Produtos extraídos diretamente da Amazônia, sem conservantes artificiais. Qualidade premium garantida.
+                        </p>
+                    </div>
+
+                    <!-- Card 3 - Atacado e Varejo -->
+                    <div class="beneficios__card">
+                        <div class="beneficios__icon-wrapper">
+                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="9" cy="21" r="1"/>
+                                <circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                        </div>
+                        <h3 class="beneficios__card-title">Atacado e Varejo</h3>
+                        <p class="beneficios__card-text">
+                            Condições especiais para revendedores, sorveterias e pontos de açaí. Pequenas e grandes quantidades.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 - Entrega Ágil -->
+                    <div class="beneficios__card">
+                        <div class="beneficios__icon-wrapper">
+                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="beneficios__card-title">Entrega Ágil</h3>
+                        <p class="beneficios__card-text">
+                            Logística para Fortaleza e região metropolitana. Embalagem especial para manter a qualidade dos produtos.
+                        </p>
+                    </div>
+
+                    <!-- Card 5 - Suporte Comercial -->
+                    <div class="beneficios__card">
+                        <div class="beneficios__icon-wrapper">
+                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="beneficios__card-title">Suporte Comercial</h3>
+                        <p class="beneficios__card-text">
+                            Equipe dedicada para atender seu negócio. Orçamentos personalizados e acompanhamento da sua compra.
+                        </p>
+                    </div>
+
+                    <!-- Card 6 - Origem Amazônica -->
                     <div class="beneficios__card">
                         <div class="beneficios__icon-wrapper">
                             <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -586,81 +670,9 @@
                                 <path d="M8 12c0-2.2 1.8-4 4-4"/>
                             </svg>
                         </div>
-                        <h3 class="beneficios__card-title">100% Natural</h3>
+                        <h3 class="beneficios__card-title">Origem Amazônica</h3>
                         <p class="beneficios__card-text">
-                            Ingredientes puros extraídos da floresta amazônica, sem químicos ou aditivos sintéticos.
-                        </p>
-                    </div>
-
-                    <!-- Card 2 - Resultados Visiveis -->
-                    <div class="beneficios__card">
-                        <div class="beneficios__icon-wrapper">
-                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 3c-1.5 0-2.5.5-3 1.5-.5 1-.5 2.5 0 4 .5 1.5 2 3 3 4 1-1 2.5-2.5 3-4 .5-1.5.5-3 0-4-.5-1-1.5-1.5-3-1.5z"/>
-                                <path d="M12 8v13"/>
-                                <path d="M9 21h6"/>
-                            </svg>
-                        </div>
-                        <h3 class="beneficios__card-title">Resultados Visíveis</h3>
-                        <p class="beneficios__card-text">
-                            Fórmulas desenvolvidas cientificamente para resultados comprovados em até 4 semanas.
-                        </p>
-                    </div>
-
-                    <!-- Card 3 - Dermatologicamente Testado -->
-                    <div class="beneficios__card">
-                        <div class="beneficios__icon-wrapper">
-                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            </svg>
-                        </div>
-                        <h3 class="beneficios__card-title">Dermatologicamente Testado</h3>
-                        <p class="beneficios__card-text">
-                            Aprovado por dermatologistas, seguro para todos os tipos de pele, inclusive sensíveis.
-                        </p>
-                    </div>
-
-                    <!-- Card 4 - Hidratacao Profunda -->
-                    <div class="beneficios__card">
-                        <div class="beneficios__icon-wrapper">
-                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-                            </svg>
-                        </div>
-                        <h3 class="beneficios__card-title">Hidratação Profunda</h3>
-                        <p class="beneficios__card-text">
-                            Ativos como cupuaçu e buriti penetram nas camadas mais profundas da pele.
-                        </p>
-                    </div>
-
-                    <!-- Card 5 - Cruelty Free -->
-                    <div class="beneficios__card">
-                        <div class="beneficios__icon-wrapper">
-                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                            </svg>
-                        </div>
-                        <h3 class="beneficios__card-title">Cruelty Free</h3>
-                        <p class="beneficios__card-text">
-                            Nunca testamos em animais. Certificação internacional de produtos veganos.
-                        </p>
-                    </div>
-
-                    <!-- Card 6 - Sustentavel -->
-                    <div class="beneficios__card">
-                        <div class="beneficios__icon-wrapper">
-                            <svg class="beneficios__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                <polyline points="7.5 4.21 12 6.81 16.5 4.21"/>
-                                <polyline points="7.5 19.79 7.5 14.6 3 12"/>
-                                <polyline points="21 12 16.5 14.6 16.5 19.79"/>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                <line x1="12" y1="22.08" x2="12" y2="12"/>
-                            </svg>
-                        </div>
-                        <h3 class="beneficios__card-title">Sustentável</h3>
-                        <p class="beneficios__card-text">
-                            Embalagens recicláveis e processos de produção que respeitam o meio ambiente.
+                            Trabalhamos com comunidades ribeirinhas para trazer o melhor da floresta. Sabor autêntico e sustentável.
                         </p>
                     </div>
                 </div>
@@ -1052,186 +1064,6 @@
             >
         </section>
 
-        <!-- ===== ESTATÍSTICAS ===== -->
-        <section class="estatisticas" id="estatisticas">
-            <!-- Background Esquerdo - desliza da esquerda para o centro -->
-            <div class="estatisticas__bg estatisticas__bg--left">
-                <img 
-                    src="./src/assets/images/fundo-roxo (1).png" 
-                    alt="" 
-                    class="estatisticas__bg-img"
-                >
-            </div>
-
-            <!-- Background Direito - fixo -->
-            <div class="estatisticas__bg estatisticas__bg--right">
-                <img 
-                    src="./src/assets/images/fundo-roxo (1).png" 
-                    alt="" 
-                    class="estatisticas__bg-img"
-                >
-            </div>
-
-            <!-- Conteúdo -->
-            <div class="estatisticas__content">
-                <div class="estatisticas__container">
-                    <!-- Header da Seção -->
-                    <div class="estatisticas__header">
-                        <span class="estatisticas__tag"><span class="estatisticas__tag-static">Nossos</span> <span class="estatisticas__tag-gradient">Números</span></span>
-                        <h2 class="estatisticas__title">A Força da Amazônia em Números</h2>
-                    </div>
-
-                    <!-- Cards de Estatísticas -->
-                    <div class="estatisticas__grid">
-                        <!-- Card 1 -->
-                        <div class="estatisticas__card" data-target="5">
-                            <div class="estatisticas__stars estatisticas__stars--left"></div>
-                            <div class="estatisticas__number-wrapper">
-                                <span class="estatisticas__number">0</span>
-                                <span class="estatisticas__suffix">+</span>
-                            </div>
-                            <span class="estatisticas__label">Anos de Experiência</span>
-                            <div class="estatisticas__stars estatisticas__stars--right"></div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="estatisticas__card" data-target="50000">
-                            <div class="estatisticas__stars estatisticas__stars--left"></div>
-                            <div class="estatisticas__number-wrapper">
-                                <span class="estatisticas__number">0</span>
-                                <span class="estatisticas__suffix">+</span>
-                            </div>
-                            <span class="estatisticas__label">Clientes Satisfeitos</span>
-                            <div class="estatisticas__stars estatisticas__stars--right"></div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="estatisticas__card" data-target="100">
-                            <div class="estatisticas__stars estatisticas__stars--left"></div>
-                            <div class="estatisticas__number-wrapper">
-                                <span class="estatisticas__number">0</span>
-                                <span class="estatisticas__suffix">%</span>
-                            </div>
-                            <span class="estatisticas__label">Produtos Naturais</span>
-                            <div class="estatisticas__stars estatisticas__stars--right"></div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="estatisticas__card" data-target="4">
-                            <div class="estatisticas__stars estatisticas__stars--left"></div>
-                            <div class="estatisticas__number-wrapper">
-                                <span class="estatisticas__number">0</span>
-                                <span class="estatisticas__suffix"></span>
-                            </div>
-                            <span class="estatisticas__label">Pontos de Venda</span>
-                            <div class="estatisticas__stars estatisticas__stars--right"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== GALERIA ===== -->
-        <section class="galeria" id="galeria">
-            <div class="galeria__container">
-                <!-- Header da Seção -->
-                <div class="galeria__header">
-                    <span class="galeria__tag">Nossa Galeria</span>
-                    <h2 class="galeria__title">Confira Nossos Melhores Momentos</h2>
-                    <p class="galeria__subtitle">
-                        Explore imagens que capturam a essência da Floramazônia e nossos produtos incríveis.
-                    </p>
-                </div>
-
-                <!-- Carrossel de Galeria -->
-                <div class="galeria__carousel-wrapper">
-                    <!-- Botão Anterior -->
-                    <button class="galeria__nav galeria__nav--prev" aria-label="Anterior">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <!-- Track do Carrossel -->
-                    <div class="galeria__carousel">
-                        <div class="galeria__track">
-                            <!-- Card 1 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria1.png" alt="Galeria Floramazônia 1" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 2 - CTA Model -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/CTA-model.webp" alt="Modelo Floramazônia" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 3 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria2.png" alt="Galeria Floramazônia 2" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 4 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria3.png" alt="Galeria Floramazônia 3" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 5 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria4.jpeg" alt="Galeria Floramazônia 4" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 6 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria5.jpg" alt="Galeria Floramazônia 5" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 7 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria6.JPG" alt="Galeria Floramazônia 6" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 8 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria7.jpg" alt="Galeria Floramazônia 7" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Card 9 -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria8.jpg" alt="Galeria Floramazônia 8" class="galeria__image" loading="lazy">
-                            </div>
-                            <!-- Duplicados para loop infinito -->
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria1.png" alt="Galeria Floramazônia 1" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/CTA-model.webp" alt="Modelo Floramazônia" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria2.png" alt="Galeria Floramazônia 2" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria3.png" alt="Galeria Floramazônia 3" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria4.jpeg" alt="Galeria Floramazônia 4" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria5.jpg" alt="Galeria Floramazônia 5" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria6.JPG" alt="Galeria Floramazônia 6" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria7.jpg" alt="Galeria Floramazônia 7" class="galeria__image" loading="lazy">
-                            </div>
-                            <div class="galeria__card">
-                                <img src="./src/assets/images/galeria8.jpg" alt="Galeria Floramazônia 8" class="galeria__image" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Botão Próximo -->
-                    <button class="galeria__nav galeria__nav--next" aria-label="Próximo">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
-
         <!-- ===== FAQ ===== -->
         <section class="faq" id="faq">
             <div class="faq__container">
@@ -1522,7 +1354,6 @@
                         <li><a href="#beneficios" class="footer__nav-link">Benefícios</a></li>
                         <li><a href="#produtos" class="footer__nav-link">Produtos</a></li>
                         <li><a href="#depoimentos" class="footer__nav-link">Depoimentos</a></li>
-                        <li><a href="#galeria" class="footer__nav-link">Galeria</a></li>
                         <li><a href="#faq" class="footer__nav-link">FAQ</a></li>
                         <li><a href="#contato" class="footer__nav-link">Contato</a></li>
                     </ul>
@@ -1559,7 +1390,7 @@
                             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                         </svg>
                     </a>
-                    <a href="https://wa.me/5585997210637" class="footer__social-link footer__social-link--whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/558587775898" class="footer__social-link footer__social-link--whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                         </svg>
@@ -1572,7 +1403,7 @@
     <!-- ===== WHATSAPP FLUTUANTE ===== -->
     <div class="whatsapp-float">
         <span class="whatsapp-float__label">Fale conosco!</span>
-        <a href="https://wa.me/5585997210637" class="whatsapp-float__button" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
+        <a href="https://wa.me/558587775898" class="whatsapp-float__button" target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp">
             <svg class="whatsapp-float__icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>

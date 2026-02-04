@@ -250,6 +250,20 @@
     transform: translateY(-3px);
 }
 
+.hero__btn--ifood {
+    color: var(--color-white);
+    background-color: #EA1D2C;
+    border: 2px solid #EA1D2C;
+}
+
+.hero__btn--ifood:hover {
+    background-color: #d11826;
+    border-color: #d11826;
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(234, 29, 44, 0.4);
+}
+
 /* ===== ESTATISTICAS ===== */
 .hero__stats {
     display: flex;

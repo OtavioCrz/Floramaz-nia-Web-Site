@@ -63,7 +63,7 @@
     font-family: var(--font-primary);
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
-    color: var(--color-secondary);
+    color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 1rem;
@@ -79,7 +79,7 @@
 }
 
 .cta-final__title-highlight {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     display: block;
 }
 
@@ -117,7 +117,7 @@
 .cta-final__benefit-icon {
     width: 24px;
     height: 24px;
-    background: var(--color-secondary);
+    background: var(--color-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;

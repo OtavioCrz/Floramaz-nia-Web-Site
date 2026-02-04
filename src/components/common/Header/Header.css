@@ -9,6 +9,7 @@
     left: 0;
     right: 0;
     z-index: var(--z-fixed);
+    overflow: visible;
     padding: 1rem 0;
     transition: background-color var(--transition-base), 
                 box-shadow var(--transition-base),
@@ -33,6 +34,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+    overflow: visible;
 }
 
 /* ===== LOGO ===== */
@@ -69,6 +71,7 @@
 @media (min-width: 1024px) {
     .header__nav {
         display: block;
+        overflow: visible;
     }
 }
 
@@ -79,6 +82,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    overflow: visible;
 }
 
 .header__nav-link {
@@ -102,6 +106,71 @@
 
 .header__nav-link.active {
     background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== DROPDOWN PRODUTOS (Desktop) ===== */
+.header__nav-item--has-dropdown {
+    position: relative;
+}
+
+.header__nav-link--trigger::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.35rem;
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    vertical-align: middle;
+    opacity: 0.85;
+}
+
+.header__dropdown {
+    position: absolute;
+    top: 100%;
+    padding-top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 220px;
+    padding: 0.5rem 0;
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 9999;
+}
+
+.header__nav-item--has-dropdown:hover .header__dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.header__dropdown-item {
+    margin: 0;
+}
+
+.header__dropdown-link {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background-color var(--transition-fast),
+                color var(--transition-fast);
+}
+
+.header__dropdown-link:hover {
+    background-color: rgba(123, 45, 142, 0.08);
+    color: var(--color-primary);
 }
 
 /* ===== BOTAO CTA ===== */
@@ -248,6 +317,39 @@
 .header__mobile-nav-link.active {
     color: var(--color-white);
     background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Submenu Produtos (Mobile) */
+.header__mobile-nav-item--has-submenu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.header__mobile-nav-label {
+    display: block;
+    padding: 1rem 1.25rem;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.header__mobile-submenu {
+    list-style: none;
+    margin: 0 0 0 1rem;
+    padding: 0;
+    border-left: 2px solid rgba(255, 255, 255, 0.3);
+    padding-left: 0.75rem;
+}
+
+.header__mobile-submenu li {
+    margin: 0;
+}
+
+.header__mobile-submenu .header__mobile-nav-link {
+    padding: 0.6rem 1rem;
+    font-size: var(--font-size-sm);
 }
 
 .header__mobile-cta {

@@ -68,6 +68,7 @@
 .galeria__carousel {
     flex: 1;
     overflow: hidden;
+    touch-action: pan-y; /* Permite scroll vertical, arraste horizontal pelo JS */
     mask-image: linear-gradient(
         to right,
         transparent 0%,
@@ -118,7 +119,7 @@
     transform: scale(1.1);
 }
 
-/* ===== NAVIGATION BUTTONS ===== */
+/* ===== NAVIGATION BUTTONS (apenas mobile) ===== */
 .galeria__nav {
     flex-shrink: 0;
     width: 48px;
@@ -147,6 +148,22 @@
     transform: scale(0.95);
     background: var(--color-secondary);
     color: var(--color-white);
+}
+
+/* Desktop: esconde botões - apenas auto-scroll e arrastar */
+@media (min-width: 768px) {
+    .galeria__nav {
+        display: none;
+    }
+    
+    .galeria__carousel {
+        cursor: grab;
+        user-select: none;
+    }
+    
+    .galeria__carousel.galeria__carousel--dragging {
+        cursor: grabbing;
+    }
 }
 
 /* ===== RESPONSIVO ===== */

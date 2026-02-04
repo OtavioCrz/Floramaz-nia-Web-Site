@@ -27,6 +27,6 @@
 - Antes de subir: rode `npm run lint` (se configurado) e `npm run build` para evitar quebrar o deploy.
 
 ## Contatos e dados críticos
-- Telefone oficial: (85) 99721-0637 (WhatsApp). Mantenha esse número igual em HTML, JSON-LD e CTAs.
+- Telefone oficial: (85) 8777-5898 (WhatsApp). Mantenha esse número igual em HTML, JSON-LD e CTAs.
 - E-mail: contato@floramazonia.com.br. Atualize em JSON-LD e formulários se mudar.
 - Horário de atendimento: seg–sex 08h–18h; sábado 08h–12h (ajuste no JSON-LD se houver mudança).
