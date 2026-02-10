@@ -281,11 +281,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
-    <!-- ===== ESTILOS CSS ===== -->
+    <!-- ===== ESTILOS CSS ===== -->
+
+
+
+
+
+
     
-    <!-- Estilos dos Componentes -->
+    <!-- Estilos dos Componentes -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <script type="module" crossorigin src="/assets/index-D-isOY2a.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-DE-4SNC9.css">
+  <link rel="stylesheet" href="/assets/Localizacao.css">
+  <link rel="stylesheet" href="/assets/textType.css">
 </head>
 <body>
     <!-- ===== HEADER ===== -->
@@ -1757,6 +1779,47 @@
             window.addEventListener('scroll', updateActiveLink);
             updateActiveLink(); // Chamar uma vez no carregamento
         });
-    </script>
+    </script>
+    <script src="/assets/textType.js"></script>
+    <script>
+        // Initialize text type animation for location section
+        function initLocalizacaoAnimation() {
+            const titleElement = document.querySelector('.localizacao__title[data-text-type]');
+            const localizacaoSection = document.getElementById('localizacao');
+
+            if (titleElement && localizacaoSection && typeof TextType !== 'undefined') {
+                const textToType = titleElement.getAttribute('data-text-type');
+                console.log('Inicializando TextType com:', textToType);
+                
+                // Clear any existing content
+                titleElement.innerHTML = '';
+                
+                const textTypeInstance = new TextType(titleElement, {
+                    text: textToType,
+                    typingSpeed: parseInt(titleElement.getAttribute('data-typing-speed')) || 40,
+                    pauseDuration: parseInt(titleElement.getAttribute('data-pause-duration')) || 3000,
+                    showCursor: titleElement.getAttribute('data-show-cursor') !== 'false',
+                    loop: false,
+                    onAnimationComplete: () => {
+                        console.log('Animação completa!');
+                        // Remove typing mode class and add complete class
+                        localizacaoSection.classList.remove('localizacao--typing-mode');
+                        localizacaoSection.classList.add('localizacao--typing-complete');
+                    }
+                });
+            } else {
+                console.log('Elementos não encontrados ou TextType não definido');
+            }
+        }
+
+        // Wait for DOM to be ready or use DOMContentLoaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initLocalizacaoAnimation);
+        } else {
+            initLocalizacaoAnimation();
+        }
+    </script>
+
+
 </body>
 </html>
