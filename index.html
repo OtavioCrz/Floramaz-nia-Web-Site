@@ -1800,6 +1800,7 @@
                     pauseDuration: parseInt(titleElement.getAttribute('data-pause-duration')) || 3000,
                     showCursor: titleElement.getAttribute('data-show-cursor') !== 'false',
                     loop: false,
+                    startOnVisible: true, // Iniciar apenas quando a seção estiver visível
                     onAnimationComplete: () => {
                         console.log('Animação completa!');
                         // Remove typing mode class and add complete class
