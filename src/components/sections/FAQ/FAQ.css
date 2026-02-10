@@ -55,6 +55,12 @@
     margin: 0 auto;
 }
 
+/* ===== BLUR TEXT ANIMATION ===== */
+.blur-text__segment {
+    display: inline-block;
+    will-change: transform, filter, opacity;
+}
+
 /* ===== ACCORDION - GRID 2 COLUNAS ===== */
 .faq__accordion {
     display: grid;

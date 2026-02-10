@@ -1,84 +1,97 @@
-﻿<!-- ===== HERO SECTION - FLORAMAZONIA ===== -->
-<section id="hero" class="hero">
-    <!-- Background com overlay -->
+﻿<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+    <!-- Background Image -->
     <div class="hero__background">
-        <img src="./src/assets/images/fundo-hero.webp" alt="" class="hero__background-image" loading="eager">
+        <img 
+            src="./src/assets/images/fundo-hero.webp" 
+            alt="" 
+            class="hero__background-image"
+            loading="eager"
+            fetchpriority="high"
+        >
         <div class="hero__background-overlay"></div>
     </div>
-    
-    <!-- Conteudo -->
+
+    <!-- Conteudo Principal -->
     <div class="hero__container">
         <div class="hero__content">
-            <!-- Badge -->
-            <span class="hero__badge">
-                <svg class="hero__badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                </svg>
-                100% Natural da Amazonia
-            </span>
-            
+            <!-- Badge/Tag -->
+            <div class="hero__badge">
+                <span class="hero__badge-icon"></span>
+                <span class="hero__badge-text">100% Natural da Amazonia</span>
+            </div>
+
             <!-- Titulo Principal -->
             <h1 class="hero__title">
-                <span class="hero__title-line">Descubra o Poder</span>
-                <span class="hero__title-connector">da</span>
-                <span class="hero__title-highlight">Natureza Amazonica</span>
+                <span class="hero__title-acai">Açaí</span>, Gelato e Sorbet
+                <span class="hero__title-connector">100% Natural</span>
+                <span class="hero__title-highlight">da Amazônia</span>
             </h1>
-            
+
             <!-- Subtitulo -->
             <p class="hero__subtitle">
-                Produtos naturais de alta qualidade, extraidos diretamente da floresta 
-                amazonica para transformar sua saude e bem-estar.
+                Açaí Premium, Gelatos Artesanais e Sorbets Naturais extraídos diretamente da floresta amazônica.
+                Qualidade superior, sabor incomparável e respeito ao meio ambiente.
             </p>
-            
+
             <!-- Botoes CTA -->
-            <div class="hero__cta-group">
-                <a href="#produtos" class="hero__cta hero__cta--primary">
-                    Ver Produtos
-                    <svg class="hero__cta-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
+            <div class="hero__actions">
+                <a href="#produtos" class="hero__btn hero__btn--primary">
+                    <span>Ver Catálogo</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
                 </a>
-                <a href="#sobre" class="hero__cta hero__cta--secondary">
-                    Conheca Nossa Historia
+                <a href="https://wa.me/558587775898" class="hero__btn hero__btn--secondary" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span>Fale no WhatsApp</span>
+                </a>
+                <a href="https://www.ifood.com.br/delivery/fortaleza-ce/floramazonia----distribuidora-de-acai-e-gelatos-farias-brito/45863591-80db-477a-90e6-ad816a3c006b" target="_blank" rel="noopener noreferrer" class="hero__btn hero__btn--ifood" aria-label="Pedir no iFood">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.139.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.576.576 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.91h.011c0-.498-.406-.902-.906-.902h-.011c-.5 0-.906.404-.906.902v.857c-.576-.035-1.17-.053-1.755-.053-.18 0-.358.007-.535.018z"/>
+                    </svg>
+                    <span>Pedir no iFood</span>
                 </a>
             </div>
-            
-            <!-- Indicadores de confianca -->
-            <div class="hero__trust">
-                <div class="hero__trust-item">
-                    <svg class="hero__trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2L3 7v7c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/>
-                    </svg>
-                    <span>Qualidade Garantida</span>
+
+            <!-- Indicadores/Estatisticas Rapidas -->
+            <div class="hero__stats">
+                <div class="hero__stat">
+                    <span class="hero__stat-number">+50.000</span>
+                    <span class="hero__stat-label">Clientes Satisfeitos</span>
                 </div>
-                <div class="hero__trust-item">
-                    <svg class="hero__trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
-                    </svg>
-                    <span>Origem Sustentavel</span>
+                <div class="hero__stat-divider"></div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number">100%</span>
+                    <span class="hero__stat-label">Natural</span>
                 </div>
-                <div class="hero__trust-item">
-                    <svg class="hero__trust-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                    <span>Entrega para Todo Brasil</span>
+                <div class="hero__stat-divider"></div>
+                <div class="hero__stat">
+                    <span class="hero__stat-number">+30</span>
+                    <span class="hero__stat-label">Avaliações</span>
                 </div>
             </div>
         </div>
-        
-        <!-- Imagem decorativa -->
-        <div class="hero__image">
-            <img src="./src/assets/images/indigena-hero.png" alt="Indigena amazonica" class="hero__image-main" loading="eager">
+
+        <!-- Imagem do Indigena -->
+        <div class="hero__image-wrapper">
+            <img 
+                src="./src/assets/images/indigena-hero.jpg" 
+                alt="Representacao da cultura amazonica" 
+                class="hero__image"
+                loading="eager"
+            >
         </div>
     </div>
-    
-    <!-- Scroll indicator -->
-    <div class="hero__scroll">
+
+    <!-- Scroll Indicator -->
+    <div class="hero__scroll-indicator" aria-hidden="true">
         <span class="hero__scroll-text">Role para descobrir</span>
-        <div class="hero__scroll-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
+        <div class="hero__scroll-mouse">
+            <div class="hero__scroll-wheel"></div>
         </div>
     </div>
 </section>

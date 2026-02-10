@@ -30,6 +30,22 @@
             <image:caption>Catalogo completo de Acai, Gelatos e Sorbets da Amazonia</image:caption>
         </image:image>
     </url>
+
+    <!-- Politica de Privacidade -->
+    <url>
+        <loc>https://floramazonia.com.br/politica-de-privacidade.html</loc>
+        <lastmod>2026-02-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+    <!-- Termos e Condicoes -->
+    <url>
+        <loc>https://floramazonia.com.br/termos-e-condicoes.html</loc>
+        <lastmod>2026-02-10</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
     
     <!-- Secao Sobre -->
     <url>

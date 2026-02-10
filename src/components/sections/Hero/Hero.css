@@ -123,34 +123,12 @@
 
 .hero__title-highlight {
     display: block;
-    color: var(--color-secondary);
-    text-shadow: 0 2px 20px rgba(245, 166, 35, 0.3);
+    color: #7B2D8E;
+    text-shadow: 0 2px 20px rgba(123, 45, 142, 0.3);
     white-space: nowrap;
 }
 
-/* ===== DESTAQUE ACAI ===== */
-.hero__title-acai {
-    background: linear-gradient(90deg, #7B2D8E, #B366D9, #7B2D8E);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: gradientFlow 3s ease infinite;
-    font-weight: var(--font-weight-bold);
-}
-
-@keyframes gradientFlow {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 0%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-
+/* ===== MEDIA QUERIES ===== */
 @media (min-width: 1024px) {
     .hero__title {
         text-align: left;
@@ -491,4 +469,74 @@
         object-fit: contain;
         object-position: bottom center;
     }
+}
+
+/* ===== TRUE FOCUS ANIMATION ===== */
+.focus-container {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.focus-word {
+    position: relative;
+    margin: 0 0.3em;
+    transition: filter 0.5s ease;
+    filter: blur(0px);
+    display: inline;
+}
+
+.focus-word.blur {
+    filter: blur(5px);
+}
+
+.focus-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 2px solid #7B2D8E;
+    border-radius: 4px;
+    box-shadow: 
+        inset 0 0 20px rgba(123, 45, 142, 0.3),
+        0 0 20px rgba(123, 45, 142, 0.4),
+        0 0 40px rgba(123, 45, 142, 0.2);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.focus-frame .corner {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border: 2px solid #7B2D8E;
+}
+
+.focus-frame .corner.top-left {
+    top: -2px;
+    left: -2px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.focus-frame .corner.top-right {
+    top: -2px;
+    right: -2px;
+    border-left: none;
+    border-bottom: none;
+}
+
+.focus-frame .corner.bottom-left {
+    bottom: -2px;
+    left: -2px;
+    border-right: none;
+    border-top: none;
+}
+
+.focus-frame .corner.bottom-right {
+    bottom: -2px;
+    right: -2px;
+    border-left: none;
+    border-top: none;
 }
