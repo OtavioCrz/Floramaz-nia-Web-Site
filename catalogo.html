@@ -172,6 +172,7 @@
             top: 82px;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: visible;
         }
         
         .catalogo-nav__container {
@@ -179,6 +180,7 @@
             margin: 0 auto;
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
         }
@@ -222,6 +224,21 @@
         .catalogo-nav__link--mix:hover,
         .catalogo-nav__link--mix.catalogo-nav__link--active {
             background: #FF5722;
+        }
+
+        .catalogo-nav__search-toggle {
+            border: 0;
+            cursor: pointer;
+        }
+
+        .catalogo-nav__search-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .catalogo-nav__search-toggle--active {
+            background: #7B2D8E;
+            color: #fff;
         }
         
         /* Secao de Categoria */
@@ -704,6 +721,14 @@
                 padding: 0.5rem 1rem;
                 font-size: 0.8rem;
             }
+
+            .catalogo-search {
+                top: calc(100% - 0.25rem);
+            }
+
+            .catalogo-search__container {
+                padding: 0 1rem;
+            }
             
             .catalogo-section {
                 padding: 100px 1rem 60px 1rem;
@@ -920,16 +945,25 @@
 
         /* Busca de produtos */
         .catalogo-search {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: calc(100% - 0.5rem);
+            z-index: 140;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        }
+        .catalogo-search.is-open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
         }
         .catalogo-search__container {
-            max-width: 600px;
+            max-width: 760px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -940,11 +974,16 @@
             font-weight: 600;
             color: #555;
             margin-bottom: 0.5rem;
+            text-align: left;
         }
         .catalogo-search__wrap {
             position: relative;
             display: flex;
             align-items: center;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.12);
         }
         .catalogo-search__icon {
             position: absolute;
@@ -1131,20 +1170,6 @@
         </div>
     </section>
 
-    <!-- Busca de produtos -->
-    <div class="catalogo-search" id="catalogoSearch">
-        <div class="catalogo-search__container">
-            <label for="catalogoSearchInput" class="catalogo-search__label">Pesquisar produto</label>
-            <div class="catalogo-search__wrap">
-                <svg class="catalogo-search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="search" id="catalogoSearchInput" class="catalogo-search__input" placeholder="Ex: açaí premium, gelato cupuaçu, sorbet..." autocomplete="off" aria-label="Pesquisar produtos do catálogo">
-                <button type="button" class="catalogo-search__clear" id="catalogoSearchClear" aria-label="Limpar pesquisa">✕</button>
-            </div>
-        </div>
-    </div>
     <!-- Navegação de Categorias -->
     <nav class="catalogo-nav">
         <div class="catalogo-nav__container">
@@ -1160,6 +1185,26 @@
             <a href="#mix" class="catalogo-nav__link catalogo-nav__link--mix">
                 🛒 Produtos Mix
             </a>
+            <button type="button" class="catalogo-nav__link catalogo-nav__search-toggle" id="catalogoSearchToggle" aria-controls="catalogoSearch" aria-expanded="false" aria-label="Abrir busca de produtos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Buscar
+            </button>
+        </div>
+        <div class="catalogo-search" id="catalogoSearch">
+            <div class="catalogo-search__container">
+                <label for="catalogoSearchInput" class="catalogo-search__label">Pesquisar produto</label>
+                <div class="catalogo-search__wrap">
+                    <svg class="catalogo-search__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="search" id="catalogoSearchInput" class="catalogo-search__input" placeholder="Ex: açaí premium, gelato cupuaçu, sorbet..." autocomplete="off" aria-label="Pesquisar produtos do catálogo">
+                    <button type="button" class="catalogo-search__clear" id="catalogoSearchClear" aria-label="Limpar pesquisa">✕</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -3768,6 +3813,9 @@
             const searchInput = document.getElementById('catalogoSearchInput');
             const searchClear = document.getElementById('catalogoSearchClear');
             const searchEmpty = document.getElementById('catalogoSearchEmpty');
+            const searchRoot = document.getElementById('catalogoSearch');
+            const searchToggle = document.getElementById('catalogoSearchToggle');
+            const navEl = document.querySelector('.catalogo-nav');
             const allCards = document.querySelectorAll('.catalogo-card:not(.catalogo-card--soon)');
 
             function getCardSearchText(card) {
@@ -3794,13 +3842,66 @@
                 searchEmpty.classList.toggle('is-visible', query.length > 0 && visibleCount === 0);
             }
 
+            function openSearch() {
+                if (!searchRoot) return;
+                searchRoot.classList.add('is-open');
+                if (searchToggle) {
+                    searchToggle.classList.add('catalogo-nav__search-toggle--active');
+                    searchToggle.setAttribute('aria-expanded', 'true');
+                }
+                if (searchInput) {
+                    setTimeout(() => searchInput.focus(), 80);
+                }
+            }
+
+            function closeSearch({ clear = false } = {}) {
+                if (!searchRoot) return;
+                searchRoot.classList.remove('is-open');
+                if (searchToggle) {
+                    searchToggle.classList.remove('catalogo-nav__search-toggle--active');
+                    searchToggle.setAttribute('aria-expanded', 'false');
+                }
+                if (clear && searchInput) {
+                    searchInput.value = '';
+                    applySearch();
+                }
+            }
+
             if (searchInput) {
                 searchInput.addEventListener('input', applySearch);
-                searchInput.addEventListener('keydown', (e) => { if (e.key === 'Escape') { searchInput.value = ''; applySearch(); searchInput.blur(); } });
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        closeSearch({ clear: true });
+                        searchInput.blur();
+                    }
+                });
             }
             if (searchClear) {
                 searchClear.addEventListener('click', () => { searchInput.value = ''; applySearch(); searchInput.focus(); });
             }
+            if (searchToggle) {
+                searchToggle.addEventListener('click', () => {
+                    if (searchRoot && searchRoot.classList.contains('is-open')) {
+                        closeSearch({ clear: true });
+                    } else {
+                        openSearch();
+                    }
+                });
+            }
+            if (navEl) {
+                navEl.querySelectorAll('.catalogo-nav__link[href^="#"]').forEach(link => {
+                    link.addEventListener('click', () => closeSearch({ clear: true }));
+                });
+            }
+            document.addEventListener('click', (event) => {
+                if (!searchRoot || !searchRoot.classList.contains('is-open')) return;
+                const target = event.target;
+                const clickedToggle = searchToggle && searchToggle.contains(target);
+                const clickedSearch = searchRoot.contains(target);
+                if (!clickedToggle && !clickedSearch) {
+                    closeSearch({ clear: true });
+                }
+            });
 
             function getProductKey(name, size) {
                 return `${name}|||${size}`;
