@@ -68,8 +68,6 @@ class GradualBlurAnimation {
       ? strength * this.config.hoverIntensity 
       : strength;
 
-    console.log('🎨 Criando blur com efeito visual:', { divCount, direction, strength: currentStrength });
-
     for (let i = 1; i <= divCount; i++) {
       let progress = i / divCount;
       progress = curveFunc(progress);
@@ -113,8 +111,6 @@ class GradualBlurAnimation {
       }
 
       this.blurContainer.appendChild(div);
-      
-      console.log(`✓ Element ${i}: blur=${blurValue.toFixed(2)}px, opacity=${opacity}, color=${colorIntensity.toFixed(2)}`);
     }
   }
 
@@ -151,21 +147,12 @@ class GradualBlurAnimation {
       this.blurContainer.style.bottom = '0';
     }
 
-    console.log('✓ setupBlurContainer:', {
-      position: this.blurContainer.style.position,
-      height: this.blurContainer.style.height,
-      width: this.blurContainer.style.width,
-      zIndex: this.blurContainer.style.zIndex,
-      opacity: this.blurContainer.style.opacity
-    });
   }
 
   /**
    * Inicializa tudo
    */
   init() {
-    console.log('🎬 GradualBlur init - container:', this.container);
-    
     this.blurContainer = document.createElement('div');
     this.blurContainer.className = `gradual-blur ${this.config.target === 'page' ? 'gradual-blur-page' : 'gradual-blur-parent'} ${this.config.className}`;
 
@@ -183,8 +170,6 @@ class GradualBlurAnimation {
     this.setupBlurContainer();
     this.createBlurElements();
 
-    console.log('✅ GradualBlur criado com', this.blurContainer.children.length, 'elementos');
-
     // Se animated é 'scroll', usar IntersectionObserver
     // Se animated é true, manter sempre visível
     if (this.config.animated === 'scroll') {
@@ -192,7 +177,6 @@ class GradualBlurAnimation {
         ([entry]) => {
           this.isVisible = entry.isIntersecting;
           this.blurContainer.style.opacity = this.isVisible ? this.config.opacity : 0;
-          console.log('🔄 GradualBlur visibility:', this.isVisible ? 'visible' : 'hidden');
         },
         { threshold: 0.1 }
       );
@@ -200,7 +184,6 @@ class GradualBlurAnimation {
     } else if (this.config.animated === true) {
       this.isVisible = true;
       this.blurContainer.style.opacity = this.config.opacity;
-      console.log('📍 GradualBlur sempre visível');
     }
 
     // Hover intensity

@@ -232,36 +232,20 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    animation: scrollVertical 15s linear infinite;
+    will-change: transform;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.produtos__carousel:active {
+    cursor: grabbing;
 }
 
 @media (max-width: 1023px) {
     .produtos__carousel {
         flex-direction: row;
         gap: 1rem;
-        animation: scrollHorizontal 20s linear infinite;
-    }
-}
-
-.produtos__carousel:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scrollVertical {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(calc(-50% - 0.75rem));
-    }
-}
-
-@keyframes scrollHorizontal {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-50% - 0.5rem));
     }
 }
 
@@ -347,27 +331,6 @@
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 1023px) {
-    .produtos__carousel-wrapper {
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .produtos__carousel-wrapper::-webkit-scrollbar {
-        display: none;
-    }
-
-    .produtos__carousel {
-        cursor: grab;
-    }
-
-    .produtos__carousel:active {
-        cursor: grabbing;
-        animation-play-state: paused;
-    }
-
     .produtos__card {
         min-width: 280px;
         max-width: 280px;

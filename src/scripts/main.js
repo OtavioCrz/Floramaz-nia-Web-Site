@@ -6,10 +6,11 @@
 import { initFAQ } from '../components/sections/FAQ/FAQ.js';
 import { initCTAForm } from '../components/sections/CTA/CTA.js';
 import TrueFocusAnimation from '../components/sections/Hero/Hero.js';
+import { initProdutosCarousel } from '../components/sections/Produtos/Produtos.js';
+import { WHATSAPP_NUMBER, CTA_DEFAULT_MESSAGE } from '../config/config.js';
 
 // Inicializar quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('🚀 DOM carregado! Inicializando funcionalidades...');
     initHeader();
     initMobileMenu();
     initSmoothScroll();
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     new TrueFocusAnimation('[data-animation="products"]');
     initFAQ();
     initCTAForm();
+    initProdutosCarousel();
 });
 
 /* ===== BLUR TEXT (FAQ) ===== */
@@ -326,9 +328,8 @@ function initWhatsApp() {
     document.querySelectorAll('[data-whatsapp]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            const phone = '558587775898';
-            const message = encodeURIComponent('Ola! Gostaria de saber mais sobre os produtos da Floramazonia.');
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            const message = encodeURIComponent(CTA_DEFAULT_MESSAGE);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
         });
     });
 }

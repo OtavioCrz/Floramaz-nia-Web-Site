@@ -49,7 +49,7 @@
     font-family: var(--font-primary);
     font-size: 0.875rem;
     font-weight: 600;
-    color: #e07b2e;
+    color: var(--color-nature-accent);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 16px;
@@ -59,7 +59,7 @@
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 2.75rem);
     font-weight: 600;
-    color: #1a3a2a;
+    color: var(--color-nature-dark);
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -67,7 +67,7 @@
 .beneficios__subtitle {
     font-family: var(--font-primary);
     font-size: 1.0625rem;
-    color: #5a6a5a;
+    color: var(--color-nature-text);
     line-height: 1.7;
 }
 
@@ -80,7 +80,7 @@
 
 /* ===== CARD ===== */
 .beneficios__card {
-    background: #ffffff;
+    background: var(--color-white);
     border-radius: 16px;
     padding: 32px 28px;
     transition: all 0.3s ease;
@@ -107,7 +107,7 @@
 .beneficios__icon {
     width: 28px;
     height: 28px;
-    color: #1a5a3a;
+    color: var(--color-nature-medium);
 }
 
 /* ===== CONTEUDO DO CARD ===== */
@@ -115,14 +115,14 @@
     font-family: var(--font-display);
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1a3a2a;
+    color: var(--color-nature-dark);
     margin-bottom: 12px;
 }
 
 .beneficios__card-text {
     font-family: var(--font-primary);
     font-size: 0.9375rem;
-    color: #6a7a6a;
+    color: var(--color-nature-muted);
     line-height: 1.65;
 }
 

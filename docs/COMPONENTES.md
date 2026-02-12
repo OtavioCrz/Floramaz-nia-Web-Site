@@ -1,93 +1,113 @@
-# Documentação de Componentes - Floramazonia Landing Page
+# Documentação de Componentes - Floramazônia Landing Page
 
-## 📦 Componentes por Categoria
+## 📦 Arquitetura de Componentes
 
-### Seções (`/src/components/sections/`)
+> **Nota**: O HTML de todas as seções está inline no `index.html`. Os arquivos `.html` que existiam nas pastas de componentes foram removidos na auditoria de código. Apenas CSS e JS são mantidos modularmente.
 
-#### Hero
-- **Arquivo**: `Hero.html`, `Hero.css`, `Hero.js`
-- **Descrição**: Seção principal da landing page com título, subtítulo e CTA principal
-- **Uso**: Primeira impressão, conversão inicial
+---
 
-#### Sobre
-- **Arquivo**: `Sobre.html`, `Sobre.css`, `Sobre.js`
-- **Descrição**: Apresentação da Floramazonia, história e valores
-- **Uso**: Construir confiança e credibilidade
+## Seções (`/src/components/sections/`)
 
-#### Produtos
-- **Arquivo**: `Produtos.html`, `Produtos.css`, `Produtos.js`
-- **Descrição**: Catálogo de produtos com cards e botões para WhatsApp
-- **Uso**: Mostrar ofertas e gerar interesse
+### Hero
+- **Arquivos**: `Hero.css`, `Hero.js`
+- **Classe JS**: `TrueFocusAnimation` — Cicla foco visual entre "Açaí", "Gelato" e "Sorbet"
+- **Inicialização**: Via `main.js` → `new TrueFocusAnimation('[data-animation="products"]')`
 
-#### Benefícios
-- **Arquivo**: `Beneficios.html`, `Beneficios.css`, `Beneficios.js`
-- **Descrição**: Diferenciais e vantagens dos produtos
-- **Uso**: Destacar pontos fortes
+### Sobre
+- **Arquivos**: `Sobre.css`
+- **Descrição**: Apresentação da Floramazônia, história e valores
 
-#### Depoimentos
-- **Arquivo**: `Depoimentos.html`, `Depoimentos.css`, `Depoimentos.js`
-- **Descrição**: Testemunhos de clientes satisfeitos
-- **Uso**: Prova social e credibilidade
+### Produtos
+- **Arquivos**: `Produtos.css`
+- **Descrição**: Cards de produtos com botões `[data-whatsapp]` para pedido via WhatsApp
 
-#### FAQ
-- **Arquivo**: `FAQ.html`, `FAQ.css`, `FAQ.js`
-- **Descrição**: Perguntas frequentes com accordion
-- **Uso**: Resolver objeções e dúvidas
+### Marcas
+- **Arquivos**: `Marcas.css`
+- **Descrição**: Loop infinito de logos de marcas parceiras (logoloop). Inicializado via `initLogoLoop()` no `main.js`
 
-#### CTA
-- **Arquivo**: `CTA.html`, `CTA.css`, `CTA.js`
-- **Descrição**: Chamadas para ação estratégicas
-- **Uso**: Conversão em pontos-chave da página
+### Benefícios
+- **Arquivos**: `Beneficios.css`
+- **Descrição**: Cards de benefícios dos produtos. Animação com GSAP ScrollTrigger (inline no `index.html`)
+- **Variáveis CSS**: Usa variáveis de `variables.css` (`--color-nature-*`)
 
-#### Galeria
-- **Arquivo**: `Galeria.html`, `Galeria.css`, `Galeria.js`
-- **Descrição**: Galeria de imagens dos produtos
-- **Uso**: Visualização dos produtos
+### Depoimentos
+- **Arquivos**: `Depoimentos.css`
+- **Descrição**: Carrossel de depoimentos com estrelas SVG via `<use href="#icon-star"/>`
 
-#### Estatísticas
-- **Arquivo**: `Estatisticas.html`, `Estatisticas.css`, `Estatisticas.js`
-- **Descrição**: Números, métricas e conquistas
-- **Uso**: Autoridade e confiança
+### Estatísticas
+- **Arquivos**: `Estatisticas.css`, `Estatisticas.js`
+- **Função**: `initEstatisticas()` — Contadores animados
+- **Status**: Exporta função mas **não é importada** no `main.js` (candidato a integração)
 
-#### Footer
-- **Arquivo**: `Footer.html`, `Footer.css`, `Footer.js`
-- **Descrição**: Rodapé com informações e links
-- **Uso**: Informações finais e navegação
+### FAQ
+- **Arquivos**: `FAQ.css`, `FAQ.js`
+- **Função**: `initFAQ()` — Accordion de perguntas frequentes
+- **Inicialização**: Via `main.js` → `initFAQ()`
 
-### Componentes Comuns (`/src/components/common/`)
+### Galeria
+- **Arquivos**: `Galeria.css`, `Galeria.js`
+- **Função**: `initGaleria()` — Galeria de imagens
+- **Status**: Exporta função mas **não é importada** no `main.js` (candidato a integração)
 
-#### Header
-- **Arquivo**: `Header.html`, `Header.css`, `Header.js`
-- **Descrição**: Cabeçalho com navegação e logo
-- **Uso**: Navegação e branding
+### Localização
+- **Arquivos**: `Localizacao.css`
+- **Descrição**: Mapa Google Maps e informações de endereço. Animação de digitação via `textType.js`
 
-#### WhatsAppButton
-- **Arquivo**: `WhatsAppButton.html`, `WhatsAppButton.css`, `WhatsAppButton.js`
-- **Descrição**: Botão flutuante do WhatsApp
-- **Uso**: Acesso rápido ao WhatsApp em qualquer momento
+### CTA (Call-to-Action)
+- **Arquivos**: `CTA.css`, `CTA.js`, `GradualBlur.css`, `GradualBlur.js`
+- **Função**: `initCTAForm()` — Formulário que monta mensagem e abre WhatsApp
+- **Config**: Número do WhatsApp importado de `config.js`
+- **Inicialização**: Via `main.js` → `initCTAForm()`
+- **GradualBlur**: Efeito visual de blur gradual aplicado a elementos decorativos
 
-#### Modal
-- **Arquivo**: `Modal.html`, `Modal.css`, `Modal.js`
-- **Descrição**: Modais e popups
-- **Uso**: Mensagens importantes e ofertas especiais
+### Footer
+- **Arquivos**: `Footer.css`
+- **Descrição**: Rodapé com links, redes sociais e informações de contato
 
-#### Loader
-- **Arquivo**: `Loader.html`, `Loader.css`, `Loader.js`
-- **Descrição**: Indicador de carregamento
-- **Uso**: Feedback visual durante carregamento
+---
 
-#### ScrollToTop
-- **Arquivo**: `ScrollToTop.html`, `ScrollToTop.css`, `ScrollToTop.js`
-- **Descrição**: Botão para voltar ao topo
-- **Uso**: Melhorar experiência de navegação
+## Componentes Comuns (`/src/components/common/`)
 
-## 🎯 Padrão de Desenvolvimento
+### Header
+- **Arquivos**: `Header.css`
+- **JS**: Funções `initHeader()` e `initMobileMenu()` estão no `main.js`
+- **Descrição**: Cabeçalho fixo com navegação, logo e botão CTA
 
-Cada componente segue a estrutura:
-- **HTML**: Estrutura semântica com classes Tailwind
-- **CSS**: Estilos customizados que complementam Tailwind
-- **JS**: Lógica e interatividade do componente
+### WhatsAppButton
+- **Arquivos**: `WhatsAppButton.css`
+- **Descrição**: Botão flutuante do WhatsApp (canto inferior direito)
+
+---
+
+## Configuração Centralizada (`/src/config/config.js`)
+
+```javascript
+export const WHATSAPP_NUMBER = '558587775898';
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+export const CTA_DEFAULT_MESSAGE = '...';
+```
+
+Importado por `main.js` e `CTA.js` para evitar hardcoding.
+
+---
+
+## 🎯 Fluxo de Inicialização (`main.js`)
+
+```
+DOMContentLoaded
+├── initHeader()
+├── initMobileMenu()
+├── initSmoothScroll()
+├── initWhatsApp()          ← usa WHATSAPP_NUMBER de config.js
+├── initBlurText()
+├── initLogoLoop()
+├── new TrueFocusAnimation()
+├── initFAQ()
+└── initCTAForm()
+```
 
 ## 📱 Integração WhatsApp
 
-Todos os botões de ação redirecionam para o WhatsApp através do script `whatsapp.js`, que formata mensagens e abre o aplicativo/web do WhatsApp.
+Dois mecanismos:
+1. **Atributo `[data-whatsapp]`** — Botões com esse atributo são interceptados por `initWhatsApp()` no `main.js`, que abre o WhatsApp com mensagem padrão
+2. **Formulário CTA** — O `initCTAForm()` no `CTA.js` monta uma mensagem personalizada com dados do formulário

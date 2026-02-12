@@ -6,11 +6,13 @@
 # Regras para todos os bots
 User-agent: *
 Allow: /
+Allow: /assets/
 Allow: /src/assets/
 Allow: /src/styles/
 Allow: /src/components/
 Disallow: /src/config/
 Disallow: /src/scripts/
+Disallow: /node_modules/
 
 # Googlebot - Permitir tudo para indexacao completa
 User-agent: Googlebot
@@ -19,6 +21,7 @@ Crawl-delay: 1
 
 # Googlebot para imagens
 User-agent: Googlebot-Image
+Allow: /assets/
 Allow: /src/assets/images/
 Allow: /*.webp$
 Allow: /*.png$

@@ -300,3 +300,49 @@
     }
 }
 
+/* ===== CTA AVALIAÇÃO GOOGLE ===== */
+.depoimentos__cta-wrapper {
+    text-align: center;
+    margin-top: 2.5rem;
+    padding-bottom: 1rem;
+    position: relative;
+    z-index: 5;
+}
+
+.depoimentos__cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    color: var(--color-white);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    border-radius: var(--border-radius-full);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(245, 166, 35, 0.35);
+}
+
+.depoimentos__cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(245, 166, 35, 0.5);
+    filter: brightness(1.08);
+}
+
+.depoimentos__cta-btn svg {
+    flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+    .depoimentos__cta-wrapper {
+        margin-top: 1.5rem;
+    }
+
+    .depoimentos__cta-btn {
+        font-size: var(--font-size-sm);
+        padding: 0.75rem 1.5rem;
+    }
+}
+

@@ -1,75 +1,104 @@
-# Estrutura do Projeto - Floramazonia Landing Page
+# Estrutura do Projeto - Floramazônia Landing Page
 
 ## 📋 Visão Geral
 
-Este projeto é uma landing page moderna desenvolvida com **HTML**, **CSS**, **JavaScript** e **Tailwind CSS**, otimizada para conversão e geração de leads através do WhatsApp.
+Landing page moderna desenvolvida com **HTML**, **CSS**, **JavaScript** e **Tailwind CSS**, otimizada para conversão e geração de leads via WhatsApp. O projeto usa **Vite** como bundler e GSAP/Anime.js para animações.
+
+## 🏗️ Arquitetura
+
+O projeto segue uma arquitetura **monolítica** — todo o conteúdo HTML está inline no `index.html`. Os estilos CSS e scripts JS são organizados em pastas modulares dentro de `src/`, importados pelo Vite durante o build.
 
 ## 🗂️ Estrutura de Pastas
 
 ### Raiz do Projeto
-- `index.html` - Página principal HTML
-- `package.json` - Dependências e scripts do projeto
-- `tailwind.config.js` - Configuração do Tailwind CSS
-- `postcss.config.js` - Configuração do PostCSS
-- `vite.config.js` - Configuração do Vite
-- `.gitignore` - Arquivos ignorados pelo Git
 
-### `/src` - Código Fonte
+| Arquivo | Descrição |
+|---------|-----------|
+| `index.html` | Página principal (monolítica, ~1830 linhas) |
+| `package.json` | Dependências e scripts |
+| `tailwind.config.js` | Configuração do Tailwind CSS |
+| `postcss.config.js` | Configuração do PostCSS |
+| `vite.config.js` | Configuração do Vite (porta 3000) |
 
-#### `/src/components` - Componentes
-- `/sections` - Seções da landing page
-  - Cada seção possui sua própria pasta com:
-    - `[Nome].html` - Estrutura HTML
-    - `[Nome].css` - Estilos específicos (complementa Tailwind)
-    - `[Nome].js` - Lógica JavaScript
-- `/common` - Componentes reutilizáveis
-  - Header, WhatsAppButton, Modal, Loader, ScrollToTop
+### `/src` — Código Fonte
 
-#### `/src/styles` - Estilos
-- `tailwind.css` - Importações do Tailwind
-- `main.css` - Arquivo principal que importa todos os estilos
-- `variables.css` - Variáveis CSS customizadas
-- `reset.css` - Reset de estilos
-- `responsive.css` - Media queries adicionais
-- `animations.css` - Animações customizadas
-- `components.css` - Estilos de componentes
+#### `/src/config`
+- `config.js` — Configurações centralizadas (WhatsApp, constantes)
 
-#### `/src/scripts` - JavaScript
-- `main.js` - Script principal
-- `utils.js` - Funções utilitárias
-- `animations.js` - Animações JavaScript
-- `whatsapp.js` - Integração com WhatsApp
-- `analytics.js` - Analytics e tracking
-- `form-validation.js` - Validação de formulários
-- `scroll-reveal.js` - Efeitos de scroll
+#### `/src/scripts`
+- `main.js` — Script principal, inicializa todos os componentes
+- `textType.js` — Animação de digitação (seção Localização)
 
-#### `/src/config` - Configurações
-- `config.js` - Configurações gerais (WhatsApp, URLs, etc.)
+#### `/src/styles`
+| Arquivo | Descrição |
+|---------|-----------|
+| `main.css` | Importa todos os estilos |
+| `tailwind.css` | Diretivas do Tailwind |
+| `variables.css` | Variáveis CSS customizadas (cores, fontes, espaçamentos) |
+| `reset.css` | Reset de estilos |
+| `animations.css` | Keyframes de animações |
+| `components.css` | Estilos de componentes genéricos |
+| `responsive.css` | Media queries adicionais |
+| `textType.css` | Estilos da animação de digitação |
+| `legal.css` | Estilos de páginas legais |
 
-#### `/src/assets` - Recursos
-- `/images` - Imagens do site
-- `/icons` - Ícones
-- `/fonts` - Fontes customizadas
-- `/videos` - Vídeos
+#### `/src/components/sections`
 
-### `/public` - Arquivos Públicos
-- `favicon.ico` - Favicon
-- `manifest.json` - PWA manifest
-- `robots.txt` - Configuração SEO
-- `sitemap.xml` - Sitemap
-- `og-image.jpg` - Imagem Open Graph
-- `apple-touch-icon.png` - Ícone iOS
+Cada seção possui uma pasta com arquivos CSS e, quando necessário, JS:
 
-### `/docs` - Documentação
-- `ESTRUTURA.md` - Este arquivo
-- `COMPONENTES.md` - Documentação dos componentes
+| Seção | CSS | JS | Descrição |
+|-------|-----|-----|-----------|
+| Hero | ✅ | ✅ `TrueFocusAnimation` | Banner principal com animação de foco |
+| Sobre | ✅ | — | Apresentação da empresa |
+| Produtos | ✅ | — | Cards de produtos |
+| Marcas | ✅ | — | Loop de logos de marcas parceiras |
+| Benefícios | ✅ | — | Cards de benefícios (GSAP ScrollTrigger) |
+| Depoimentos | ✅ | — | Carrossel de depoimentos |
+| Estatísticas | ✅ | ✅ `initEstatisticas` | Contadores animados |
+| FAQ | ✅ | ✅ `initFAQ` | Accordion de perguntas |
+| Galeria | ✅ | ✅ `initGaleria` | Galeria de imagens |
+| Localização | ✅ | — | Mapa e endereço |
+| CTA | ✅ | ✅ `initCTAForm` + `GradualBlur` | Formulário WhatsApp + efeito blur |
+| Footer | ✅ | — | Rodapé |
 
-## 🎨 Tailwind CSS
+#### `/src/components/common`
+| Componente | Arquivos | Descrição |
+|------------|----------|-----------|
+| Header | `Header.css` | Estilos do cabeçalho (JS no main.js) |
+| WhatsAppButton | `WhatsAppButton.css` | Estilos do botão flutuante |
 
-O projeto utiliza Tailwind CSS como framework de estilização principal. As classes do Tailwind são usadas diretamente no HTML, enquanto estilos customizados complementares ficam nos arquivos CSS específicos de cada componente.
+#### `/src/assets`
+- `/images` — Imagens do site (WebP, PNG, JPG)
+- `/icons` — Ícones (reservado)
+- `/fonts` — Fontes customizadas (reservado)
+- `/videos` — Vídeos (reservado)
+
+### `/public` — Arquivos Estáticos
+- `manifest.json` — PWA manifest
+- `robots.txt` — Configuração SEO
+- `sitemap.xml` — Sitemap
+- `humans.txt` — Créditos
+- `security.txt` — Política de segurança
+
+### `/docs` — Documentação
+- `ESTRUTURA.md` — Este arquivo
+- `COMPONENTES.md` — Documentação dos componentes
+- `CATALOGO_AUDITORIA.md` — Registro de auditoria
+- `MAINTENANCE.md` — Guia de manutenção
+
+## 🔧 SVG Symbols
+
+Os ícones SVG reutilizados (WhatsApp, estrela) estão definidos como `<symbol>` no início do `<body>` no `index.html`, referenciados via `<use href="#icon-whatsapp"/>` e `<use href="#icon-star"/>`.
 
 ## 📦 Build e Deploy
 
-- **Desenvolvimento**: `npm run dev`
-- **Build**: `npm run build`
-- **Preview**: `npm run preview`
+```bash
+npm run dev       # Servidor de desenvolvimento (porta 3000)
+npm run build     # Build de produção → /dist
+npm run preview   # Preview do build
+```
+
+## 🔗 CDNs Externos
+
+- **GSAP 3.12.2** + ScrollTrigger — Animações de scroll
+- **Anime.js** — Animações programáticas

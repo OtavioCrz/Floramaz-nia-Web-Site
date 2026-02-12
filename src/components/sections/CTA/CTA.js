@@ -2,13 +2,15 @@
    CTA FINAL - JAVASCRIPT
    ===================================================== */
 
+import { WHATSAPP_NUMBER } from '../../../config/config.js';
+
 function initCTAForm() {
     const form = document.getElementById('cta-form');
     
     if (!form) return;
     
-    // Número do WhatsApp (formato internacional sem caracteres especiais)
-    const whatsappNumber = '558587775898';
+    // Número do WhatsApp importado de config.js
+    const whatsappNumber = WHATSAPP_NUMBER;
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();

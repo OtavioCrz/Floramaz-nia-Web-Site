@@ -103,9 +103,5 @@ class TrueFocusAnimation {
     }
 }
 
-// Inicializar quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    new TrueFocusAnimation('[data-animation="products"]');
-});
-
+// Exportado como módulo — inicialização feita em main.js
 export default TrueFocusAnimation;

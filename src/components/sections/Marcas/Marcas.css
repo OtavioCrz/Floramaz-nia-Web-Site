@@ -56,7 +56,7 @@
     min-height: var(--logoloop-logo-height);
     padding: 0.5rem 0;
     --logoloop-gap: 48px;
-    --logoloop-logo-height: 56px;
+    --logoloop-logo-height: 80px;
 }
 
 .logoloop--fade {
@@ -117,7 +117,7 @@
     }
 
     .logoloop {
-        --logoloop-gap: 32px;
-        --logoloop-logo-height: 44px;
+        --logoloop-gap: 36px;
+        --logoloop-logo-height: 60px;
     }
 }
